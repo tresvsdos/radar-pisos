@@ -10,7 +10,8 @@ service cloud.firestore {
 
     match /radar/{quien} {
       allow read: if true;
-      allow write: if quien in ['inigo', 'laura', 'comun']
+      allow delete: if quien in ['inigo', 'laura', 'comun'];
+      allow create, update: if quien in ['inigo', 'laura', 'comun']
                    && request.resource.data.keys().hasOnly(['decisiones','copias','orden','visto','reset']);
     }
 
