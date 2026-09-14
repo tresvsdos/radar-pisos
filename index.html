@@ -65,6 +65,8 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   padding:24px;text-align:center;color:var(--muted);font-size:13px}
 .sinfoto b{font-family:var(--slab);font-size:17px;color:var(--text)}
 .tiras{position:absolute;z-index:4;top:9px;left:10px;right:10px;display:flex;gap:4px}
+.tiras{max-width:100%}
+.tiras.muchas{display:none}
 .tiras i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.42);box-shadow:0 0 2px rgba(0,0,0,.35)}
 .tiras i.on{background:#fff}
 .flecha{position:absolute;z-index:5;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;
@@ -76,6 +78,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 .etiqueta{position:absolute;z-index:4;left:10px;bottom:10px;font-size:10.5px;font-weight:700;letter-spacing:.07em;
   text-transform:uppercase;padding:5px 9px;border-radius:4px;background:var(--ochre-bg);color:var(--ochre)}
 .etiqueta.baja{background:var(--brick-soft);color:var(--brick)}
+.estancia{position:absolute;z-index:4;right:10px;top:10px;font-size:11px;font-weight:600;background:rgba(11,20,23,.55);color:#fff;padding:4px 8px;border-radius:4px}
 .nfoto{position:absolute;z-index:4;right:10px;bottom:10px;font-family:var(--mono);font-size:11px;font-weight:600;
   background:rgba(11,20,23,.55);color:#fff;padding:4px 8px;border-radius:4px;font-variant-numeric:tabular-nums}
 
@@ -197,6 +200,12 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     pintarEnvio();
   }
 
+  function urlFoto(f){
+    if(!f) return "";
+    var r=String(f).split("|")[0];
+    return r.indexOf("http")===0?r:((D.foto_base||"")+r+".webp");
+  }
+  function tagFoto(f){var t=String(f||"").split("|")[1];return t||"";}
   function pila(){
     var o={nuevo:0,baja:1,subida:2,sigue:3};
     return D.pisos.filter(function(p){return !vigente(p.id);}).sort(function(a,b){
@@ -214,9 +223,10 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     var mu={confirmado:'Confirmado',marcado:'Por confirmar',dudoso:'Solo cocina'}[p.muebles]||'Sin datos';
     var h='<div class="izq"><div class="visor">';
     h+='<div class="sinfoto"><b>'+esc(p.zona||'Zaragoza')+'</b><span>'+(fs.length?'La foto no ha cargado':'El anuncio no trae fotos')+'</span></div>';
-    if(f) h+='<img src="'+esc(f)+'" alt="Foto de '+esc(p.direccion)+'" referrerpolicy="no-referrer" draggable="false" onerror="this.style.visibility=\'hidden\'">';
+    if(f) h+='<img src="'+esc(urlFoto(f))+'" alt="'+esc(tagFoto(f)||'Foto')+' de '+esc(p.direccion)+'" referrerpolicy="no-referrer" draggable="false" onerror="this.style.visibility=\'hidden\'">';
+    if(tagFoto(f)) h+='<span class="estancia">'+esc(tagFoto(f))+'</span>';
     if(fs.length>1){
-      h+='<div class="tiras">'; for(var k=0;k<fs.length;k++) h+='<i class="'+(k===i?'on':'')+'"></i>'; h+='</div>';
+      h+='<div class="tiras'+(fs.length>12?' muchas':'')+'">'; for(var k=0;k<fs.length;k++) h+='<i class="'+(k===i?'on':'')+'"></i>'; h+='</div>';
       h+='<button class="flecha a" data-paso="-1" data-id="'+esc(p.id)+'" aria-label="Foto anterior"'+(i===0?' disabled':'')+'>'+ICON.izq+'</button>';
       h+='<button class="flecha b" data-paso="1" data-id="'+esc(p.id)+'" aria-label="Foto siguiente"'+(i===fs.length-1?' disabled':'')+'>'+ICON.der+'</button>';
       h+='<span class="nfoto">'+(i+1)+' / '+fs.length+'</span>';
@@ -341,7 +351,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 
   function filaHTML(p,tipo){
     var f=(p.fotos||[]).filter(Boolean)[0];
-    var h='<div class="fila"><div class="mini">'+(f?'<img src="'+esc(f)+'" alt="" referrerpolicy="no-referrer" onerror="this.remove()">':'')+'</div><div class="cuerpo">';
+    var h='<div class="fila"><div class="mini">'+(f?'<img src="'+esc(urlFoto(f))+'" alt="" referrerpolicy="no-referrer" onerror="this.remove()">':'')+'</div><div class="cuerpo">';
     h+='<div class="alto"><h3'+(tipo==='no'?' class="tachado"':'')+'>'+esc(p.direccion)+'</h3><span class="p">'+eur(p.precio)+'</span></div>';
     h+='<p class="z">'+esc(p.zona||'')+(p.m2?', '+p.m2+' m²':'')+(p.habitaciones?', '+p.habitaciones+' hab':'')
       +(p.distancia_km!=null?', a '+km(p.distancia_km)+' km de CIRCE':'')+(p.puntuacion!=null?', '+p.puntuacion+' puntos':'')+'</p>';
