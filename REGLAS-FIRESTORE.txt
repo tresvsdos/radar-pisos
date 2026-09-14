@@ -11,7 +11,7 @@ service cloud.firestore {
     match /radar/{quien} {
       allow read: if true;
       allow write: if quien in ['inigo', 'laura', 'comun']
-                   && request.resource.data.keys().hasOnly(['decisiones','copias','orden','visto']);
+                   && request.resource.data.keys().hasOnly(['decisiones','copias','orden','visto','reset']);
     }
 
     match /{documento=**} {

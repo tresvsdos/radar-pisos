@@ -249,7 +249,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   <div><h1>Piso sí, piso no</h1><p class="dia" id="dia">Zaragoza</p></div>
   <button class="yo" id="yo" hidden></button>
   <span class="ver" id="estado-nube"></span>
-  <span class="ver" id="ver">v 14 sep 11:12</span>
+  <span class="ver" id="ver">v 14 sep 11:21</span>
   <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"></nav>
 </div></header>
 <div class="quien" id="quien" hidden><div class="caja">
@@ -759,7 +759,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     pendiente=setTimeout(function(){
       nube.collection('radar').doc(YO).set({decisiones:E, copias:COPIA, visto:Date.now()})
         .catch(function(e){console.warn('no se pudo guardar en la nube', e.code||e);});
-      nube.collection('radar').doc('comun').set({orden:ORDEN})
+      nube.collection('radar').doc('comun').set({orden:ORDEN, reset:(leer('radar-reset',0)||0)})
         .catch(function(){});
     }, 500);
   }
@@ -782,7 +782,14 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
           }, function(e){console.warn('lectura', e.code||e);});
         });
         nube.collection('radar').doc('comun').onSnapshot(function(d){
-          var v=d.data(); if(v&&v.orden&&v.orden.length>=ORDEN.length){ ORDEN=v.orden; }
+          var v=d.data(); if(!v) return;
+          if(v.reset && v.reset>(leer('radar-reset',0)||0)){
+            E=[]; SUS=[]; COPIA={}; COPIA_OTRO={}; ORDEN=[]; VISTOS=[]; yaEscribi=false;
+            try{localStorage.setItem('radar-reset', JSON.stringify(v.reset));
+                localStorage.setItem('radar-matches','[]');}catch(e){}
+            guardarLocal(); guardarFav(); pintar(); return;
+          }
+          if(v.orden&&v.orden.length>=ORDEN.length){ ORDEN=v.orden; }
           pintar();
         }, function(){});
         var s=document.getElementById('estado-nube');
