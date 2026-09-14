@@ -61,9 +61,11 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;will-change:transform}
 .tarjeta.plegada{touch-action:none}
 .tarjeta.suave{transition:transform .3s cubic-bezier(.22,.61,.36,1)}
-.tarjeta.va-si{border-color:var(--good);box-shadow:var(--shadow),inset 0 0 0 3px var(--good)}
-.tarjeta.va-no{border-color:var(--brick);box-shadow:var(--shadow),inset 0 0 0 3px var(--brick)}
-.sello{transition:opacity .08s}
+.tinte{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;border-radius:16px;will-change:opacity}
+.tinte.si{background:linear-gradient(to left,rgba(44,106,85,.42),rgba(44,106,85,0) 60%)}
+.tinte.no{background:linear-gradient(to right,rgba(166,72,47,.42),rgba(166,72,47,0) 60%)}
+.tarjeta.va-si{border-color:var(--good)}
+.tarjeta.va-no{border-color:var(--brick)}
 .tarjeta.detras{transform:scale(.955) translateY(15px);pointer-events:none;box-shadow:none;opacity:.8}
 .tarjeta:active{cursor:grabbing}
 
@@ -244,7 +246,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   <div><h1>Piso sí, piso no</h1><p class="dia" id="dia">Zaragoza</p></div>
   <button class="yo" id="yo" hidden></button>
   <span class="ver" id="estado-nube"></span>
-  <span class="ver" id="ver">v 14 sep 10:57</span>
+  <span class="ver" id="ver">v 14 sep 11:03</span>
   <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"></nav>
 </div></header>
 <div class="quien" id="quien" hidden><div class="caja">
@@ -410,7 +412,8 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     }
     if(p.estado==='nuevo') h+='<span class="etiqueta">Nuevo</span>';
     else if(p.estado==='baja') h+='<span class="etiqueta baja">Baja de precio</span>';
-    h+='<span class="sello si">Me gusta</span><span class="sello no">Ni de coña</span></div></div>';
+    h+='<span class="sello si">Me gusta</span><span class="sello no">Ni de coña</span></div>'
+      +'<i class="tinte si"></i><i class="tinte no"></i></div>';
 
     h+='<div class="der"><div class="alto"><div style="min-width:0">';
     h+='<h2 class="dir">'+esc(p.direccion)+'</h2>';
@@ -461,19 +464,33 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   }
   function limpiarMapas(){mapas.forEach(function(m){try{m.remove();}catch(e){}});mapas=[];}
 
-  function umbral(el){ return Math.max(70, Math.min(130, el.offsetWidth*0.28)); }
-  function mover(el,x,y){
-    el.style.transform='translate('+x+'px,'+(y*.2)+'px) rotate('+(x/26)+'deg)';
-    var u=umbral(el);
-    el.querySelector('.sello.si').style.opacity=tope(x/(u*0.85),0,1);
-    el.querySelector('.sello.no').style.opacity=tope(-x/(u*0.85),0,1);
-    el.classList.toggle('va-si', x>=u);
-    el.classList.toggle('va-no', x<=-u);
+  function umbral(el){ return Math.max(70, Math.min(130, (el._ancho||el.offsetWidth)*0.28)); }
+  function mover(el,x,y,u){
+    if(!el._p){
+      el._p={ si:el.querySelector('.sello.si'), no:el.querySelector('.sello.no'),
+              tsi:el.querySelector('.tinte.si'), tno:el.querySelector('.tinte.no'), cruz:0 };
+    }
+    el._x=x; el._y=y; el._u=u||el._u||umbral(el);
+    if(el._raf) return;
+    el._raf=requestAnimationFrame(function(){
+      el._raf=0;
+      var X=el._x, Y=el._y, U=el._u, P=el._p;
+      el.style.transform='translate3d('+X+'px,'+(Y*.2)+'px,0) rotate('+(X/26)+'deg)';
+      var d=tope(X/U,0,1), i=tope(-X/U,0,1);
+      P.si.style.opacity=d; P.no.style.opacity=i;
+      if(P.tsi) P.tsi.style.opacity=d*.5;
+      if(P.tno) P.tno.style.opacity=i*.5;
+      var c = X>=U?1 : X<=-U?-1 : 0;
+      if(c!==P.cruz){ P.cruz=c;
+        el.classList.toggle('va-si', c===1);
+        el.classList.toggle('va-no', c===-1);
+      }
+    });
   }
   function volar(el,p,d){
     if(el.dataset.fuera) return;
-    el.dataset.fuera='1'; el.classList.add('suave'); el.classList.remove('va-si','va-no');
-    mover(el,d==='si'?innerWidth+400:-(innerWidth+400),160);
+    el.dataset.fuera='1'; el.classList.add('suave');
+    mover(el,d==='si'?innerWidth+400:-(innerWidth+400),160,el._u||umbral(el));
     setTimeout(function(){decidir(p,d);},280);
   }
   function pasarFoto(p,paso){
@@ -520,7 +537,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
       }
       g.x2=x; g.y2=y;
       if(e.cancelable) e.preventDefault();
-      mover(el,x,y);
+      mover(el,x,y,g.u);
     }
     function fin(e, cancelar){
       if(!g) return;
@@ -530,18 +547,20 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
       window.removeEventListener('pointercancel',aborta);
       el.style.touchAction='';
       el.classList.add('suave');
-      el.classList.remove('va-si','va-no');
-      if(cancelar||!st.mando){ mover(el,0,0); return; }
-      var x=st.x2||0, u=umbral(el);
+      if(cancelar||!st.mando){ el.classList.remove('va-si','va-no'); mover(el,0,0,st.u); return; }
+      var x=st.x2||0, u=st.u;
       if(x>=u) volar(el,p,'si');
       else if(x<=-u) volar(el,p,'no');
-      else mover(el,0,0);
+      else mover(el,0,0,u);
     }
     function suelta(e){ fin(e,false); }
     function aborta(e){ fin(e,true); }
+    el.addEventListener('dragstart',function(e){e.preventDefault();});
     el.addEventListener('pointerdown',function(e){
       if(el.dataset.fuera||e.target.closest('a,button')) return;
-      g={x:e.clientX,y:e.clientY,x2:0,y2:0,t:Date.now(),id:e.pointerId,mando:false};
+      el._ancho=el.offsetWidth;
+      g={x:e.clientX,y:e.clientY,x2:0,y2:0,t:Date.now(),id:e.pointerId,mando:false,u:umbral(el)};
+      el._u=g.u;
       el.classList.remove('suave');
       window.addEventListener('pointermove',mueve,{passive:false});
       window.addEventListener('pointerup',suelta);
