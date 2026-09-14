@@ -159,10 +159,6 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 .fila.caida .pos{background:var(--brick);color:#fff}
 .nota-orden{font-size:12.5px;color:var(--muted);margin:0 0 10px}
 
-.envio{position:sticky;bottom:0;background:var(--surface);border-top:1px solid var(--line);
-  padding:10px 20px calc(10px + env(safe-area-inset-bottom));margin-top:18px;z-index:20}
-.envio .in{max-width:1020px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.envio p{margin:0;font-size:12.5px;color:var(--muted)}
 .btn{background:var(--accent);color:#fff;border:0;border-radius:7px;padding:11px 15px;font-weight:600;font-size:14px;
   cursor:pointer;text-decoration:none;display:inline-block}
 .btn.sec{background:var(--surface);color:var(--accent);border:1px solid var(--accent)}
@@ -185,11 +181,10 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"></nav>
 </div></header>
 <main id="vista"><div class="panel"><p>Cargando los pisos…</p></div></main>
-<div class="envio" id="envio" hidden><div class="in"><p id="envio-txt"></p><div id="envio-btns" style="display:flex;gap:8px;flex-wrap:wrap"></div></div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 (function(){
-  var D={pisos:[],fecha:'',circe:null,destinatario:''}, E=[], hist=[], tab='decidir', arriba=null, foto={}, mapas=[];
+  var D={pisos:[],fecha:'',circe:null}, E=[], hist=[], tab='decidir', arriba=null, foto={}, mapas=[];
   var CLAVE='radar-pisos-zgz';
   var ICON={
     no:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
@@ -199,7 +194,6 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     der:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>'};
 
   try{E=JSON.parse(localStorage.getItem(CLAVE)||'[]');}catch(e){}
-  try{D.destinatario=localStorage.getItem('radar-dest')||'';}catch(e){}
   var ORDEN=[], COPIA={};
   try{ORDEN=JSON.parse(localStorage.getItem('radar-orden-fav')||'[]');}catch(e){}
   try{COPIA=JSON.parse(localStorage.getItem('radar-copia-fav')||'{}');}catch(e){}
@@ -225,14 +219,6 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   function mapaUrl(p){return 'https://www.google.com/maps/search/?api=1&query='+orig(p);}
   function ruta(p){var c=D.circe,d=c&&c.lat!=null?c.lat+','+c.lng:encodeURIComponent('Avenida Ranillas 3D, 50018 Zaragoza');
     return 'https://www.google.com/maps/dir/?api=1&origin='+orig(p)+'&destination='+d+'&travelmode=transit';}
-  function pedirDireccion(){
-    var v=prompt('¿A qué dirección envío las decisiones?',D.destinatario||'');
-    if(v==null) return; v=v.trim();
-    if(v&&v.indexOf('@')<1){alert('Esa dirección no parece un correo.');return;}
-    D.destinatario=v;
-    try{v?localStorage.setItem('radar-dest',v):localStorage.removeItem('radar-dest');}catch(e){}
-    pintarEnvio();
-  }
 
   function urlFoto(f){
     if(!f) return "";
@@ -385,14 +371,15 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   function deshacer(){
     var x=hist.pop(); if(!x) return;
     var i=E.indexOf(x);
-    if(i>=0&&!x.enviado) E.splice(i,1); else E.push({id:x.id,d:'reset',dir:x.dir,t:Date.now()});
+    if(i>=0) E.splice(i,1); else E.push({id:x.id,d:'reset',dir:x.dir,t:Date.now()});
     guardar(); tab='decidir'; pintar();
   }
   function cambiar(p,d){
     if(!p) return;
     for(var i=E.length-1;i>=0;i--){
       if(E[i].id===p.id){
-        if(!E[i].enviado){E.splice(i,1); if(vigente(p.id)===d||(d==='reset'&&!vigente(p.id))){guardar();pintar();return;}}
+        E.splice(i,1);
+        if(vigente(p.id)===d||(d==='reset'&&!vigente(p.id))){guardar();pintar();return;}
         break;
       }
     }
@@ -430,7 +417,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     ids.forEach(function(id){if(ORDEN.indexOf(id)<0) ORDEN.push(id);});
     guardarFav();
   }
-  function mover(dir, id){
+  function moverFav(dir, id){
     var i=ORDEN.indexOf(id); if(i<0) return;
     var j=i+dir; if(j<0||j>=ORDEN.length) return;
     var t=ORDEN[i]; ORDEN[i]=ORDEN[j]; ORDEN[j]=t;
@@ -476,53 +463,6 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     h+='<div class="acc"><button data-accion="reset" data-id="'+esc(p.id)+'">Recuperar</button></div>';
     return h+'</div></div>';
   }
-  function lotes(){
-    var pend=E.filter(function(x){return !x.enviado;});
-    if(!pend.length||!D.destinatario) return [];
-    var movil=window.matchMedia&&matchMedia('(pointer:coarse)').matches;
-    function cuerpo(xs,dir){return xs.map(function(x){return x.d+' '+x.id+(dir&&x.dir?' | '+x.dir:'');}).join('\n');}
-    function url(b,n,t){
-      var su='[Radar pisos] decisiones '+D.fecha+(t>1?' ('+n+' de '+t+')':'');
-      return movil?'mailto:'+D.destinatario+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(b)
-        :'https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(D.destinatario)+'&su='+encodeURIComponent(su)+'&body='+encodeURIComponent(b);
-    }
-    var u=url(cuerpo(pend,true),1,1); if(u.length<=1900) return [{url:u,xs:pend,movil:movil}];
-    u=url(cuerpo(pend,false),1,1);   if(u.length<=1900) return [{url:u,xs:pend,movil:movil}];
-    var g=[]; for(var i=0;i<pend.length;i+=30) g.push(pend.slice(i,i+30));
-    return g.map(function(xs,k){return {url:url(cuerpo(xs,false),k+1,g.length),xs:xs,movil:movil};});
-  }
-  function copiar(){
-    var pend=E.filter(function(x){return !x.enviado;});
-    var t=(D.destinatario?'Para: '+D.destinatario+'\n':'')+'Asunto: [Radar pisos] decisiones '+D.fecha+'\n\n'
-      +pend.map(function(x){return x.d+' '+x.id+(x.dir?' | '+x.dir:'');}).join('\n');
-    var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();
-    try{document.execCommand('copy');}catch(e){}
-    document.body.removeChild(ta);
-    if(navigator.clipboard) navigator.clipboard.writeText(t).catch(function(){});
-    pend.forEach(function(x){x.enviado=true;}); guardar(); pintarEnvio();
-    alert('Copiado. Pégalo en un correo y envíalo.');
-  }
-  function pintarEnvio(){
-    var caja=document.getElementById('envio'), pend=E.filter(function(x){return !x.enviado;}).length;
-    if(!E.length){caja.hidden=true;return;}
-    caja.hidden=false;
-    document.getElementById('envio-txt').textContent=pend
-      ?(pend===1?'1 decisión sin enviar':pend+' decisiones sin enviar')+'. Se aplican mañana.':'Todo enviado.';
-    var b=document.getElementById('envio-btns'); b.innerHTML='';
-    if(pend&&!D.destinatario){
-      var q=document.createElement('button'); q.className='btn'; q.textContent='Elegir dirección'; q.onclick=pedirDireccion; b.appendChild(q);
-    }
-    lotes().forEach(function(l,k,a){
-      var el=document.createElement('a'); el.className='btn'; el.href=l.url;
-      if(!l.movil){el.target='_blank';el.rel='noreferrer';}
-      el.textContent=a.length>1?'Enviar parte '+(k+1):'Enviar decisiones';
-      el.addEventListener('click',function(){setTimeout(function(){l.xs.forEach(function(x){x.enviado=true;});guardar();pintarEnvio();},400);});
-      b.appendChild(el);
-    });
-    if(pend){var c=document.createElement('button');c.className='btn sec';c.textContent='Copiar';c.onclick=copiar;b.appendChild(c);}
-    if(D.destinatario){var m=document.createElement('button');m.className='btn sec';m.textContent='Dirección';m.title=D.destinatario;m.onclick=pedirDireccion;b.appendChild(m);}
-  }
-
   function pintar(){
     limpiarMapas();
     sincronizar();
@@ -536,8 +476,8 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 
     if(tab==='decidir'){
       if(!P.length){
-        v.innerHTML='<div class="panel"><h2>No queda nada por decidir</h2><p>'
-          +(E.some(function(x){return !x.enviado;})?'Pulsa «Enviar decisiones» abajo para que cuenten mañana.':'Mañana a las 8:00 llegan los nuevos.')+'</p></div>';
+        v.innerHTML='<div class="panel"><h2>No queda nada por decidir</h2>'
+          +'<p>Tus favoritos y tus descartes se guardan aquí. Mañana a las 8:00 llegan los pisos nuevos.</p></div>';
       }else{
         var total=D.pisos.length, n=total-P.length+1;
         v.innerHTML='<div class="pila" id="pila"></div><div class="mandos">'
@@ -569,10 +509,9 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     v.querySelectorAll('[data-accion]').forEach(function(b){
       b.onclick=function(){cambiar(porId[b.dataset.id]||(COPIA[b.dataset.id]&&COPIA[b.dataset.id].piso),b.dataset.accion);};
     });
-    v.querySelectorAll('[data-sube]').forEach(function(b){b.onclick=function(){mover(-1,b.dataset.sube);};});
-    v.querySelectorAll('[data-baja]').forEach(function(b){b.onclick=function(){mover(1,b.dataset.baja);};});
+    v.querySelectorAll('[data-sube]').forEach(function(b){b.onclick=function(){moverFav(-1,b.dataset.sube);};});
+    v.querySelectorAll('[data-baja]').forEach(function(b){b.onclick=function(){moverFav(1,b.dataset.baja);};});
     v.querySelectorAll('[data-paso]').forEach(function(b){b.onclick=function(ev){ev.stopPropagation();pasarFoto(porId[b.dataset.id],Number(b.dataset.paso));};});
-    pintarEnvio();
   }
 
   document.addEventListener('click',function(e){
@@ -584,17 +523,12 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     else if(e.key==='ArrowLeft') volar(arriba.el,arriba.p,'no');
     else if(e.key==='Backspace'){e.preventDefault();deshacer();}
   });
-  addEventListener('beforeunload',function(e){
-    if(E.some(function(x){return !x.enviado;})){e.preventDefault();e.returnValue='';}
-  });
-
   fetch('datos.json?v='+Date.now()).then(function(r){
     if(!r.ok) throw new Error('No se ha podido leer datos.json ('+r.status+')');
     return r.json();
   }).then(function(j){
-    var propio=D.destinatario;
     Object.keys(j).forEach(function(k){D[k]=j[k];});
-    D.pisos=j.pisos||[]; D.destinatario=propio||j.destinatario||'';
+    D.pisos=j.pisos||[];
     indexar(); pintar();
   }).catch(function(err){
     document.getElementById('vista').innerHTML='<div class="panel"><h2>No hay datos que mostrar</h2><p>'+esc(err.message)+'</p></div>';
