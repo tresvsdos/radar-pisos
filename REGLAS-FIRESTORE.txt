@@ -1,7 +1,9 @@
 Reglas de seguridad para Firestore. Pégalas en
 Firebase Console -> Firestore Database -> Reglas -> Publicar.
 
-Dejan leer y escribir únicamente los tres documentos del radar, y cierran
+Dejan leer y escribir únicamente los tres documentos del radar. El cuarto,
+'sistema', solo se puede leer: ahí vive el sello de borrado y ninguna pestaña
+puede pisarlo, porque no está en la lista de nombres permitidos para escribir, y cierran
 todo lo demás, para que la base de datos no se pueda usar para nada más.
 
 rules_version = '2';
