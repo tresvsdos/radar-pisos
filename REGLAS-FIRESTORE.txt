@@ -1,0 +1,21 @@
+Reglas de seguridad para Firestore. Pégalas en
+Firebase Console -> Firestore Database -> Reglas -> Publicar.
+
+Dejan leer y escribir únicamente los tres documentos del radar, y cierran
+todo lo demás, para que la base de datos no se pueda usar para nada más.
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /radar/{quien} {
+      allow read: if true;
+      allow write: if quien in ['inigo', 'laura', 'comun']
+                   && request.resource.data.keys().hasOnly(['decisiones','copias','orden','visto']);
+    }
+
+    match /{documento=**} {
+      allow read, write: if false;
+    }
+  }
+}

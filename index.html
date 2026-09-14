@@ -45,6 +45,7 @@ button{font-family:inherit}
 header{background:var(--deep);color:var(--deep-text);padding:11px 20px 10px;position:sticky;top:0;z-index:30}
 .cab{max-width:1020px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
 h1{font-family:var(--slab);font-size:20px;font-weight:700;margin:0;letter-spacing:-.01em}
+.ver.sync{opacity:.75;color:#8fd3b6}
 .ver{font-size:10px;letter-spacing:.05em;opacity:.4;font-family:var(--mono);align-self:flex-start;margin-top:4px}
 .dia{font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;opacity:.7;margin:1px 0 0}
 .tabs{display:flex;gap:3px;background:rgba(255,255,255,.1);border-radius:9px;padding:3px}
@@ -201,7 +202,8 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 <header><div class="cab">
   <div><h1>Piso sí, piso no</h1><p class="dia" id="dia">Zaragoza</p></div>
   <button class="yo" id="yo" hidden></button>
-  <span class="ver" id="ver">v 14 sep 10:15</span>
+  <span class="ver" id="estado-nube"></span>
+  <span class="ver" id="ver">v 14 sep 10:19</span>
   <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"></nav>
 </div></header>
 <div class="quien" id="quien" hidden><div class="caja">
@@ -210,6 +212,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   <div class="dos"><button data-yo="inigo">Íñigo</button><button data-yo="laura">Laura</button></div>
 </div></div>
 <main id="vista"><div class="panel"><p>Cargando los pisos…</p></div></main>
+<script src="config-firebase.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 (function(){
@@ -224,6 +227,8 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 
   try{E=JSON.parse(localStorage.getItem(CLAVE)||'[]');}catch(e){}
   var ORDEN=[], COPIA={}, YO='', PERSONAS={inigo:'Íñigo', laura:'Laura'};
+  var SUS=[], COPIA_OTRO={}, nube=null, pendiente=null;
+  function eventos(){return SUS.length?E.concat(SUS):E;}
   try{YO=localStorage.getItem('radar-quien')||'';}catch(e){}
   function otro(){return YO==='inigo'?'laura':'inigo';}
   function nombre(q){return PERSONAS[q]||q;}
@@ -238,9 +243,10 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   function guardarFav(){
     try{localStorage.setItem('radar-orden-fav',JSON.stringify(ORDEN));
         localStorage.setItem('radar-copia-fav',JSON.stringify(COPIA));}catch(e){}
+    subir();
   }
   function hoy(){return new Date().toISOString().slice(0,10);}
-  function guardar(){try{localStorage.setItem(CLAVE,JSON.stringify(E));}catch(e){}}
+  function guardar(){try{localStorage.setItem(CLAVE,JSON.stringify(E));}catch(e){} subir();}
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function eur(n){return n==null?'—':Number(n).toLocaleString('es-ES')+' €';}
   function km(n){return Number(n).toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1});}
@@ -254,7 +260,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   }
   function vigente(id,q){
     q=q||YO; var d=null;
-    E.forEach(function(x){ if(x.id===id&&(x.q||'inigo')===q) d=x.d==='reset'?null:x.d; });
+    eventos().forEach(function(x){ if(x.id===id&&(x.q||'inigo')===q) d=x.d==='reset'?null:x.d; });
     return d;
   }
   function opinan(id){
@@ -437,7 +443,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 
   function ficha(id){
     if(porId[id]) return porId[id];
-    var c=COPIA[id];
+    var c=COPIA[id]||COPIA_OTRO[id];
     if(c&&c.piso) return c.piso;
     var dir='';
     E.forEach(function(x){if(x.id===id&&x.dir) dir=x.dir;});
@@ -453,8 +459,9 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   function favoritos(){
     var v={}, sueltos=[];
     ORDEN.forEach(function(id){ if(!v[id]&&gustaA(id).length){v[id]=1;sueltos.push(id);} });
-    for(var i=E.length-1;i>=0;i--){
-      var id=E[i].id;
+    var todos=eventos();
+    for(var i=todos.length-1;i>=0;i--){
+      var id=todos[i].id;
       if(!v[id]&&gustaA(id).length){v[id]=1;sueltos.push(id);}
     }
     var ambos=[], uno=[];
@@ -595,6 +602,58 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     else if(e.key==='ArrowLeft') volar(arriba.el,arriba.p,'no');
     else if(e.key==='Backspace'){e.preventDefault();deshacer();}
   });
+  function subir(){
+    if(!nube||!YO) return;
+    clearTimeout(pendiente);
+    pendiente=setTimeout(function(){
+      nube.collection('radar').doc(YO).set({decisiones:E, copias:COPIA, visto:Date.now()})
+        .catch(function(e){console.warn('no se pudo guardar en la nube', e.code||e);});
+      nube.collection('radar').doc('comun').set({orden:ORDEN})
+        .catch(function(){});
+    }, 500);
+  }
+  function conectarNube(){
+    var cfg = window.CONFIG_FIREBASE;
+    if(!cfg||!cfg.projectId) return;
+    function arranca(){
+      try{
+        firebase.initializeApp(cfg);
+        nube = firebase.firestore();
+        ['inigo','laura'].forEach(function(q){
+          nube.collection('radar').doc(q).onSnapshot(function(d){
+            var v=d.data(); if(!v) return;
+            if(q===YO){
+              if((v.decisiones||[]).length>E.length){ E=v.decisiones; COPIA=v.copias||COPIA; guardarLocal(); }
+            }else{
+              SUS=v.decisiones||[]; COPIA_OTRO=v.copias||{};
+            }
+            pintar();
+          }, function(e){console.warn('lectura', e.code||e);});
+        });
+        nube.collection('radar').doc('comun').onSnapshot(function(d){
+          var v=d.data(); if(v&&v.orden&&v.orden.length>=ORDEN.length){ ORDEN=v.orden; }
+          pintar();
+        }, function(){});
+        var s=document.getElementById('estado-nube');
+        if(s){s.textContent='sincronizado'; s.className='ver sync';}
+        subir();
+      }catch(e){console.warn('firebase', e);}
+    }
+    var a=document.createElement('script');
+    a.src='https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js';
+    a.onload=function(){
+      var b=document.createElement('script');
+      b.src='https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js';
+      b.onload=arranca; document.head.appendChild(b);
+    };
+    document.head.appendChild(a);
+  }
+  function guardarLocal(){
+    try{localStorage.setItem(CLAVE,JSON.stringify(E));
+        localStorage.setItem('radar-copia-fav',JSON.stringify(COPIA));}catch(e){}
+  }
+  conectarNube();
+
   fetch('datos.json?v='+Date.now()).then(function(r){
     if(!r.ok) throw new Error('No se ha podido leer datos.json ('+r.status+')');
     return r.json();
