@@ -136,6 +136,27 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 .acc a,.acc button{font-size:12.5px;font-weight:600;color:var(--accent);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
 .acc button.rojo{color:var(--brick)}
 .tachado{text-decoration:line-through;color:var(--muted)}
+.fila.corta{align-items:center;padding:7px 10px;gap:10px;margin-bottom:6px}
+.fila.corta .mini{width:56px;height:56px;border-radius:5px}
+.fila.corta h3{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fila.corta .p{font-size:14px}
+.fila.corta .z{font-size:11.5px;margin:1px 0 0}
+.fila.corta .acc{margin-top:3px;gap:10px}
+.fila.corta .acc a,.fila.corta .acc button{font-size:11.5px}
+.pos{flex-shrink:0;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--mono);font-size:12px;font-weight:600;background:var(--surface-2);color:var(--muted)}
+.pos.top{background:var(--accent);color:#fff}
+.ordenar{display:flex;flex-direction:column;gap:3px;flex-shrink:0;justify-content:center}
+.ordenar button{width:26px;height:22px;border:1px solid var(--line);background:var(--surface);color:var(--muted);
+  border-radius:5px;cursor:pointer;font-size:11px;line-height:1;padding:0}
+.ordenar button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.ordenar button:disabled{opacity:.3;cursor:default}
+.caido{font-size:12.5px;font-weight:600;color:var(--brick);margin:3px 0 0}
+.cambio{font-size:12.5px;font-weight:600;margin:3px 0 0}
+.avisofav{background:var(--brick-soft);border-left:4px solid var(--brick);border-radius:8px;padding:12px 14px;margin-bottom:14px}
+.avisofav b{display:block;font-size:14px;margin-bottom:3px}
+.avisofav p{margin:0;font-size:13px;color:var(--text)}
+.nota-orden{font-size:12.5px;color:var(--muted);margin:0 0 10px}
 
 .envio{position:sticky;bottom:0;background:var(--surface);border-top:1px solid var(--line);
   padding:10px 20px calc(10px + env(safe-area-inset-bottom));margin-top:18px;z-index:20}
@@ -179,6 +200,14 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 
   try{E=JSON.parse(localStorage.getItem(CLAVE)||'[]');}catch(e){}
   try{D.destinatario=localStorage.getItem('radar-dest')||'';}catch(e){}
+  var ORDEN=[], COPIA={};
+  try{ORDEN=JSON.parse(localStorage.getItem('radar-orden-fav')||'[]');}catch(e){}
+  try{COPIA=JSON.parse(localStorage.getItem('radar-copia-fav')||'{}');}catch(e){}
+  function guardarFav(){
+    try{localStorage.setItem('radar-orden-fav',JSON.stringify(ORDEN));
+        localStorage.setItem('radar-copia-fav',JSON.stringify(COPIA));}catch(e){}
+  }
+  function hoy(){return new Date().toISOString().slice(0,10);}
   function guardar(){try{localStorage.setItem(CLAVE,JSON.stringify(E));}catch(e){}}
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function eur(n){return n==null?'—':Number(n).toLocaleString('es-ES')+' €';}
@@ -332,6 +361,11 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   function decidir(p,d,apuntar){
     var x={id:p.id,d:d,dir:p.direccion||'',t:Date.now()};
     E.push(x); if(apuntar!==false) hist.push(x);
+    if(d==='si'){
+      COPIA[p.id]={piso:p,visto:D.fecha||hoy(),precio:p.precio};
+      if(ORDEN.indexOf(p.id)<0) ORDEN.push(p.id);
+      guardarFav();
+    }
     guardar(); pintar();
   }
   function deshacer(){
@@ -351,20 +385,72 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     decidir(p,d,false);
   }
 
-  function filaHTML(p,tipo){
-    var f=(p.fotos||[]).filter(Boolean)[0];
-    var h='<div class="fila"><div class="mini">'+(f?'<img src="'+esc(urlFoto(f))+'" alt="" referrerpolicy="no-referrer" onerror="this.remove()">':'')+'</div><div class="cuerpo">';
-    h+='<div class="alto"><h3'+(tipo==='no'?' class="tachado"':'')+'>'+esc(p.direccion)+'</h3><span class="p">'+eur(p.precio)+'</span></div>';
+  function favoritos(){
+    var v={}, out=[];
+    ORDEN.forEach(function(id){
+      if(!v[id]&&vigente(id)==='si'){v[id]=1;var c=COPIA[id];out.push(porId[id]||(c&&c.piso));}
+    });
+    for(var i=E.length-1;i>=0;i--){
+      var id=E[i].id;
+      if(!v[id]&&vigente(id)==='si'){v[id]=1;var c2=COPIA[id];out.push(porId[id]||(c2&&c2.piso));}
+    }
+    return out.filter(Boolean);
+  }
+  function sincronizar(){
+    favoritos().forEach(function(p){
+      var vivo=!!porId[p.id], c=COPIA[p.id]||{};
+      if(vivo){ c.piso=porId[p.id]; c.visto=D.fecha||hoy(); }
+      if(c.precio==null) c.precio=p.precio;
+      COPIA[p.id]=c;
+    });
+    var ids=favoritos().map(function(p){return p.id;});
+    ORDEN=ORDEN.filter(function(id){return ids.indexOf(id)>=0;});
+    ids.forEach(function(id){if(ORDEN.indexOf(id)<0) ORDEN.push(id);});
+    guardarFav();
+  }
+  function mover(dir, id){
+    var i=ORDEN.indexOf(id); if(i<0) return;
+    var j=i+dir; if(j<0||j>=ORDEN.length) return;
+    var t=ORDEN[i]; ORDEN[i]=ORDEN[j]; ORDEN[j]=t;
+    guardarFav(); pintar();
+  }
+  function estadoFav(p){
+    var c=COPIA[p.id]||{}, vivo=!!porId[p.id];
+    if(!vivo) return {caido:true, txt:'Ya no aparece en la lista de hoy. Visto por última vez el '+(c.visto||'?')};
+    var act=porId[p.id].precio, ant=c.precio;
+    if(ant!=null&&act!=null&&act<ant) return {txt:'Ha bajado de '+eur(ant)+' a '+eur(act), col:'var(--good)'};
+    if(ant!=null&&act!=null&&act>ant) return {txt:'Ha subido de '+eur(ant)+' a '+eur(act), col:'var(--brick)'};
+    return {txt:'Sigue publicado', col:'var(--muted)'};
+  }
+  function favHTML(p,i,n){
+    var f=(p.fotos||[]).filter(Boolean)[0], st=estadoFav(p), top=i<3;
+    var h='<div class="fila'+(st.caido?' fuera':'')+'">';
+    h+='<div class="pos'+(top?' top':'')+'">'+(i+1)+'</div>';
+    h+='<div class="mini">'+(f?'<img src="'+esc(urlFoto(f))+'" alt="" referrerpolicy="no-referrer" onerror="this.remove()">':'')+'</div>';
+    h+='<div class="cuerpo"><div class="alto"><h3>'+esc(p.direccion)+'</h3><span class="p">'+eur(p.precio)+'</span></div>';
     h+='<p class="z">'+esc(p.zona||'')+(p.m2?', '+p.m2+' m²':'')+(p.habitaciones?', '+p.habitaciones+' hab':'')
-      +(p.distancia_km!=null?', a '+km(p.distancia_km)+' km de CIRCE':'')+(p.puntuacion!=null?', '+p.puntuacion+' puntos':'')+'</p>';
+      +(p.distancia_km!=null?', a '+km(p.distancia_km)+' km de CIRCE':'')+'</p>';
+    h+='<p class="'+(st.caido?'caido':'cambio')+'"'+(st.col?' style="color:'+st.col+'"':'')+'>'
+      +(top?'Revisado hoy. ':'')+esc(st.txt)+'</p>';
     h+='<div class="acc">';
     if(p.url) h+='<a href="'+esc(p.url)+'" target="_blank" rel="noreferrer">Abrir anuncio</a>';
-    if(tipo==='si'){h+='<a href="'+esc(ruta(p))+'" target="_blank" rel="noreferrer">Ruta a CIRCE</a>'
-      +'<button class="rojo" data-accion="no" data-id="'+esc(p.id)+'">Descartar</button>';}
-    else h+='<button data-accion="reset" data-id="'+esc(p.id)+'">Recuperar</button>';
-    return h+'</div></div></div>';
+    h+='<a href="'+esc(ruta(p))+'" target="_blank" rel="noreferrer">Ruta a CIRCE</a>';
+    h+='<button class="rojo" data-accion="no" data-id="'+esc(p.id)+'">Descartar</button></div></div>';
+    h+='<div class="ordenar">'
+      +'<button data-sube="'+esc(p.id)+'" aria-label="Subir"'+(i===0?' disabled':'')+'>&#9650;</button>'
+      +'<button data-baja="'+esc(p.id)+'" aria-label="Bajar"'+(i===n-1?' disabled':'')+'>&#9660;</button></div>';
+    return h+'</div>';
   }
-
+  function descHTML(p){
+    var f=(p.fotos||[]).filter(Boolean)[0];
+    var h='<div class="fila corta"><div class="mini">'
+      +(f?'<img src="'+esc(urlFoto(f))+'" alt="" referrerpolicy="no-referrer" onerror="this.remove()">':'')+'</div>';
+    h+='<div class="cuerpo"><div class="alto"><h3 class="tachado">'+esc(p.direccion)+'</h3>'
+      +'<span class="p tachado">'+eur(p.precio)+'</span></div>';
+    h+='<p class="z">'+esc(p.zona||'')+(p.m2?', '+p.m2+' m²':'')+'</p>';
+    h+='<div class="acc"><button data-accion="reset" data-id="'+esc(p.id)+'">Recuperar</button></div>';
+    return h+'</div></div>';
+  }
   function lotes(){
     var pend=E.filter(function(x){return !x.enviado;});
     if(!pend.length||!D.destinatario) return [];
@@ -414,7 +500,8 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 
   function pintar(){
     limpiarMapas();
-    var P=pila(), F=porDec('si'), X=porDec('no');
+    sincronizar();
+    var P=pila(), F=favoritos(), X=porDec('no');
     var T=[['decidir','Decidir',P.length],['si','Favoritos',F.length],['no','Descartados',X.length]];
     document.getElementById('tabs').innerHTML=T.map(function(t){
       return '<button role="tab" data-tab="'+t[0]+'" aria-selected="'+(tab===t[0])+'">'+t[1]+'<span class="n">'+t[2]+'</span></button>';}).join('');
@@ -443,14 +530,30 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
         document.getElementById('b-atras').onclick=deshacer;
       }
     }else if(tab==='si'){
-      v.innerHTML=F.length?F.map(function(p){return filaHTML(p,'si');}).join('')
-        :'<div class="panel"><h2>Sin favoritos todavía</h2><p>Arrastra a la derecha los pisos que te gusten.</p></div>';
+      if(F.length){
+        var caidos=F.slice(0,3).filter(function(p){return estadoFav(p).caido;});
+        var h='';
+        if(caidos.length){
+          h+='<div class="avisofav"><b>'+(caidos.length===1?'Uno de tus tres primeros ya no está'
+            :caidos.length+' de tus tres primeros ya no están')+'</b><p>'
+            +caidos.map(function(p){return esc(p.direccion);}).join(', ')
+            +'. No aparece en la búsqueda de hoy, así que lo han quitado o ha dejado de cumplir los filtros.</p></div>';
+        }
+        h+='<p class="nota-orden">Ordénalos con las flechas: el primero es el que más te gusta. Los tres primeros se revisan cada día.</p>';
+        v.innerHTML=h+F.map(function(p,i){return favHTML(p,i,F.length);}).join('');
+      }else{
+        v.innerHTML='<div class="panel"><h2>Sin favoritos todavía</h2><p>Arrastra a la derecha los pisos que te gusten.</p></div>';
+      }
     }else{
-      v.innerHTML=X.length?'<p style="margin:0 0 10px;font-size:12.5px;color:var(--muted)">No volverán a salir, aunque se republiquen.</p>'
-        +X.map(function(p){return filaHTML(p,'no');}).join('')
+      v.innerHTML=X.length?'<p class="nota-orden">No volverán a salir, aunque se republiquen.</p>'
+        +X.map(descHTML).join('')
         :'<div class="panel"><h2>Sin descartes</h2><p>Aquí aparece lo que arrastres a la izquierda.</p></div>';
     }
-    v.querySelectorAll('[data-accion]').forEach(function(b){b.onclick=function(){cambiar(porId[b.dataset.id],b.dataset.accion);};});
+    v.querySelectorAll('[data-accion]').forEach(function(b){
+      b.onclick=function(){cambiar(porId[b.dataset.id]||(COPIA[b.dataset.id]&&COPIA[b.dataset.id].piso),b.dataset.accion);};
+    });
+    v.querySelectorAll('[data-sube]').forEach(function(b){b.onclick=function(){mover(-1,b.dataset.sube);};});
+    v.querySelectorAll('[data-baja]').forEach(function(b){b.onclick=function(){mover(1,b.dataset.baja);};});
     v.querySelectorAll('[data-paso]').forEach(function(b){b.onclick=function(ev){ev.stopPropagation();pasarFoto(porId[b.dataset.id],Number(b.dataset.paso));};});
     pintarEnvio();
   }
