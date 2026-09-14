@@ -59,7 +59,11 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 .tarjeta{position:absolute;inset:0;background:var(--surface);border:1px solid var(--line-soft);border-radius:16px;
   box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1.08fr 1fr;
   touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;will-change:transform}
+.tarjeta.plegada{touch-action:none}
 .tarjeta.suave{transition:transform .3s cubic-bezier(.22,.61,.36,1)}
+.tarjeta.va-si{border-color:var(--good);box-shadow:var(--shadow),inset 0 0 0 3px var(--good)}
+.tarjeta.va-no{border-color:var(--brick);box-shadow:var(--shadow),inset 0 0 0 3px var(--brick)}
+.sello{transition:opacity .08s}
 .tarjeta.detras{transform:scale(.955) translateY(15px);pointer-events:none;box-shadow:none;opacity:.8}
 .tarjeta:active{cursor:grabbing}
 
@@ -240,7 +244,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   <div><h1>Piso sí, piso no</h1><p class="dia" id="dia">Zaragoza</p></div>
   <button class="yo" id="yo" hidden></button>
   <span class="ver" id="estado-nube"></span>
-  <span class="ver" id="ver">v 14 sep 10:41</span>
+  <span class="ver" id="ver">v 14 sep 10:57</span>
   <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"></nav>
 </div></header>
 <div class="quien" id="quien" hidden><div class="caja">
@@ -457,14 +461,18 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   }
   function limpiarMapas(){mapas.forEach(function(m){try{m.remove();}catch(e){}});mapas=[];}
 
+  function umbral(el){ return Math.max(70, Math.min(130, el.offsetWidth*0.28)); }
   function mover(el,x,y){
     el.style.transform='translate('+x+'px,'+(y*.2)+'px) rotate('+(x/26)+'deg)';
-    el.querySelector('.sello.si').style.opacity=tope(x/105,0,1);
-    el.querySelector('.sello.no').style.opacity=tope(-x/105,0,1);
+    var u=umbral(el);
+    el.querySelector('.sello.si').style.opacity=tope(x/(u*0.85),0,1);
+    el.querySelector('.sello.no').style.opacity=tope(-x/(u*0.85),0,1);
+    el.classList.toggle('va-si', x>=u);
+    el.classList.toggle('va-no', x<=-u);
   }
   function volar(el,p,d){
     if(el.dataset.fuera) return;
-    el.dataset.fuera='1'; el.classList.add('suave');
+    el.dataset.fuera='1'; el.classList.add('suave'); el.classList.remove('va-si','va-no');
     mover(el,d==='si'?innerWidth+400:-(innerWidth+400),160);
     setTimeout(function(){decidir(p,d);},280);
   }
@@ -503,8 +511,11 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
       if(!g||e.pointerId!==g.id) return;
       var x=e.clientX-g.x, y=e.clientY-g.y;
       if(!g.mando){
-        if(Math.abs(x)<7&&Math.abs(y)<7) return;
-        if(Math.abs(y)>Math.abs(x)){ fin(e, true); return; }   // el dedo iba a desplazar la página
+        if(Math.abs(x)<8&&Math.abs(y)<8) return;
+        // solo cedo el gesto si es claramente vertical y hay algo que desplazar
+        var suelta2 = !el.classList.contains('plegada');
+        if(suelta2 && Math.abs(y)>Math.abs(x)*1.6 && Math.abs(y)>14){ fin(e, true); return; }
+        if(Math.abs(x)<8) return;
         g.mando=true; el.style.touchAction='none';
       }
       g.x2=x; g.y2=y;
@@ -519,10 +530,11 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
       window.removeEventListener('pointercancel',aborta);
       el.style.touchAction='';
       el.classList.add('suave');
+      el.classList.remove('va-si','va-no');
       if(cancelar||!st.mando){ mover(el,0,0); return; }
-      var x=st.x2||0, v=x/Math.max(1,Date.now()-st.t);
-      if(x>100||(v>.45&&x>40)) volar(el,p,'si');
-      else if(x<-100||(v<-.45&&x<-40)) volar(el,p,'no');
+      var x=st.x2||0, u=umbral(el);
+      if(x>=u) volar(el,p,'si');
+      else if(x<=-u) volar(el,p,'no');
       else mover(el,0,0);
     }
     function suelta(e){ fin(e,false); }
