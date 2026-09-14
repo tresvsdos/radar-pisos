@@ -58,16 +58,14 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 .pila{position:relative;height:min(660px,calc(100dvh - 235px));min-height:500px}
 .tarjeta{position:absolute;inset:0;background:var(--surface);border:1px solid var(--line-soft);border-radius:16px;
   box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1.08fr 1fr;
-  touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;will-change:transform}
-.tarjeta.plegada{touch-action:none}
-.tarjeta.suave{transition:transform .3s cubic-bezier(.22,.61,.36,1)}
+  user-select:none;-webkit-user-select:none}
+.tarjeta.suave{transition:transform .42s cubic-bezier(.34,.05,.5,1)}
 .tinte{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;border-radius:16px;will-change:opacity}
 .tinte.si{background:linear-gradient(to left,rgba(44,106,85,.42),rgba(44,106,85,0) 60%)}
 .tinte.no{background:linear-gradient(to right,rgba(166,72,47,.42),rgba(166,72,47,0) 60%)}
 .tarjeta.va-si{border-color:var(--good)}
 .tarjeta.va-no{border-color:var(--brick)}
 .tarjeta.detras{transform:scale(.955) translateY(15px);pointer-events:none;box-shadow:none;opacity:.8}
-.tarjeta:active{cursor:grabbing}
 
 .izq{position:relative;display:grid;background:var(--surface-2);min-width:0;min-height:0}
 .visor{position:relative;overflow:hidden;background:var(--surface-2)}
@@ -234,6 +232,11 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   .izq{grid-template-rows:none;height:270px}
   .tarjeta.plegada .izq{height:300px}
   .der{gap:10px}
+  main{padding-bottom:122px}
+  .mandos{position:fixed;left:0;right:0;bottom:0;z-index:25;margin:0;gap:22px;
+    background:var(--bg);border-top:1px solid var(--line);
+    padding:9px 0 calc(9px + env(safe-area-inset-bottom))}
+  .ayuda{display:none}
   .der{overflow:visible;padding:16px 17px 18px}
   .dir{font-size:21px} .precio b{font-size:23px}
   .tabla{grid-template-columns:1fr}
@@ -246,7 +249,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   <div><h1>Piso sí, piso no</h1><p class="dia" id="dia">Zaragoza</p></div>
   <button class="yo" id="yo" hidden></button>
   <span class="ver" id="estado-nube"></span>
-  <span class="ver" id="ver">v 14 sep 11:03</span>
+  <span class="ver" id="ver">v 14 sep 11:12</span>
   <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"></nav>
 </div></header>
 <div class="quien" id="quien" hidden><div class="caja">
@@ -489,9 +492,15 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   }
   function volar(el,p,d){
     if(el.dataset.fuera) return;
-    el.dataset.fuera='1'; el.classList.add('suave');
-    mover(el,d==='si'?innerWidth+400:-(innerWidth+400),160,el._u||umbral(el));
-    setTimeout(function(){decidir(p,d);},280);
+    el.dataset.fuera='1';
+    var u=umbral(el);
+    // un empujoncito hacia el lado contrario y luego fuera, para que se lea el gesto
+    el.classList.add('suave');
+    mover(el, d==='si'? -18 : 18, 0, u);
+    setTimeout(function(){
+      mover(el, d==='si'? innerWidth+460 : -(innerWidth+460), 130, u);
+    }, 110);
+    setTimeout(function(){decidir(p,d);}, 480);
   }
   function pasarFoto(p,paso){
     var fs=pases(p); if(fs.length<2) return;
@@ -522,52 +531,6 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     // adelantar la siguiente para que tampoco parpadee
     var sig=fs[i+1]; if(sig&&sig.t!=='m'){ var pre=new Image(); pre.referrerPolicy='no-referrer'; pre.src=urlFoto(sig.v); }
   }
-  function arrastre(el,p){
-    var g=null;
-    function mueve(e){
-      if(!g||e.pointerId!==g.id) return;
-      var x=e.clientX-g.x, y=e.clientY-g.y;
-      if(!g.mando){
-        if(Math.abs(x)<8&&Math.abs(y)<8) return;
-        // solo cedo el gesto si es claramente vertical y hay algo que desplazar
-        var suelta2 = !el.classList.contains('plegada');
-        if(suelta2 && Math.abs(y)>Math.abs(x)*1.6 && Math.abs(y)>14){ fin(e, true); return; }
-        if(Math.abs(x)<8) return;
-        g.mando=true; el.style.touchAction='none';
-      }
-      g.x2=x; g.y2=y;
-      if(e.cancelable) e.preventDefault();
-      mover(el,x,y,g.u);
-    }
-    function fin(e, cancelar){
-      if(!g) return;
-      var st=g; g=null;
-      window.removeEventListener('pointermove',mueve,{passive:false});
-      window.removeEventListener('pointerup',suelta);
-      window.removeEventListener('pointercancel',aborta);
-      el.style.touchAction='';
-      el.classList.add('suave');
-      if(cancelar||!st.mando){ el.classList.remove('va-si','va-no'); mover(el,0,0,st.u); return; }
-      var x=st.x2||0, u=st.u;
-      if(x>=u) volar(el,p,'si');
-      else if(x<=-u) volar(el,p,'no');
-      else mover(el,0,0,u);
-    }
-    function suelta(e){ fin(e,false); }
-    function aborta(e){ fin(e,true); }
-    el.addEventListener('dragstart',function(e){e.preventDefault();});
-    el.addEventListener('pointerdown',function(e){
-      if(el.dataset.fuera||e.target.closest('a,button')) return;
-      el._ancho=el.offsetWidth;
-      g={x:e.clientX,y:e.clientY,x2:0,y2:0,t:Date.now(),id:e.pointerId,mando:false,u:umbral(el)};
-      el._u=g.u;
-      el.classList.remove('suave');
-      window.addEventListener('pointermove',mueve,{passive:false});
-      window.addEventListener('pointerup',suelta);
-      window.addEventListener('pointercancel',aborta);
-    });
-  }
-
   function decidir(p,d,apuntar){
     var x={id:p.id,d:d,q:YO,dir:p.direccion||'',t:Date.now()};
     E.push(x); if(apuntar!==false) hist.push(x);
@@ -726,11 +689,11 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
           +'<div class="mando"><button class="redondo" id="b-no" aria-label="Ni de coña" style="width:64px;height:64px;color:var(--brick);border-color:var(--brick)">'+ICON.no+'</button>Ni de coña</div>'
           +'<div class="mando"><button class="redondo" id="b-atras" aria-label="Deshacer" style="width:46px;height:46px;color:var(--muted);border-color:var(--line)"'+(hist.length?'':' disabled')+'>'+ICON.atras+'</button>Deshacer</div>'
           +'<div class="mando"><button class="redondo" id="b-si" aria-label="Me gusta" style="width:64px;height:64px;color:#fff;background:var(--good);border-color:var(--good)">'+ICON.si+'</button>Me gusta</div>'
-          +'</div><p class="ayuda">Arrastra la tarjeta a un lado, usa los botones o las flechas del teclado. Las flechitas de la foto pasan las imágenes.</p>';
+          +'</div><p class="ayuda">Decide con los botones o con las flechas del teclado. Las flechitas de la foto pasan las imágenes.</p>';
         var pl=document.getElementById('pila');
         if(P[1]){var b=document.createElement('article');b.className='tarjeta detras'+(PLEGADO?' plegada':'');b.innerHTML=tarjeta(P[1],n+1,total);pl.appendChild(b);}
         var t=document.createElement('article');t.className='tarjeta'+(PLEGADO?' plegada':'');t.innerHTML=tarjeta(P[0],n,total);pl.appendChild(t);
-        arrastre(t,P[0]); arriba={el:t,p:P[0]};
+        arriba={el:t,p:P[0]};
         pases(P[0]).forEach(function(f){ if(f.t!=='m'){var im=new Image(); im.referrerPolicy='no-referrer'; im.src=urlFoto(f.v);} });
         if(P[1]) pases(P[1]).slice(0,2).forEach(function(f){ if(f.t!=='m'){var im=new Image(); im.referrerPolicy='no-referrer'; im.src=urlFoto(f.v);} });
         if((pases(P[0])[foto[P[0].id]||0]||{}).t==='m'){ t.dataset.conMapa='1'; ponerMapa(t,P[0],n); }
@@ -743,12 +706,12 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
         var h='<p class="nota-orden">Ordénalos con las flechas: el primero es el que más te gusta.</p>';
         v.innerHTML=h+F.map(function(p,i){return favHTML(p,i,F.length);}).join('');
       }else{
-        v.innerHTML='<div class="panel"><h2>Sin favoritos todavía</h2><p>Arrastra a la derecha los pisos que te gusten.</p></div>';
+        v.innerHTML='<div class="panel"><h2>Sin favoritos todavía</h2><p>Marca con «Me gusta» los pisos que te convenzan.</p></div>';
       }
     }else{
       v.innerHTML=X.length?'<p class="nota-orden">No volverán a salir, aunque se republiquen.</p>'
         +X.map(descHTML).join('')
-        :'<div class="panel"><h2>Sin descartes</h2><p>Aquí aparece lo que arrastres a la izquierda.</p></div>';
+        :'<div class="panel"><h2>Sin descartes</h2><p>Aquí aparece lo que descartes con «Ni de coña».</p></div>';
     }
     v.querySelectorAll('[data-accion]').forEach(function(b){
       b.onclick=function(){cambiar(porId[b.dataset.id]||(COPIA[b.dataset.id]&&COPIA[b.dataset.id].piso),b.dataset.accion);};
