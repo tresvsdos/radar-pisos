@@ -36,6 +36,7 @@
   --shadow:0 2px 4px rgba(0,0,0,.4),0 18px 42px rgba(0,0,0,.5); --ring:0 0 0 3px rgba(111,186,206,.45);
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.45;
   -webkit-font-smoothing:antialiased}
 :focus-visible{outline:none;box-shadow:var(--ring);border-radius:6px}
@@ -161,6 +162,24 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 .fila.caida h3,.fila.caida .p,.fila.caida .z{color:var(--brick)}
 .fila.caida .pos{background:var(--brick);color:#fff}
 .nota-orden{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.quien{position:fixed;inset:0;z-index:60;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px}
+.quien .caja{max-width:420px;width:100%;text-align:center}
+.quien h2{font-family:var(--slab);font-size:27px;font-weight:700;margin:0 0 6px}
+.quien p{margin:0 0 22px;color:var(--muted);font-size:14px}
+.quien .dos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.quien button{border:2px solid var(--line);background:var(--surface);color:var(--text);border-radius:12px;
+  padding:22px 12px;font-family:var(--slab);font-size:21px;font-weight:600;cursor:pointer;transition:border-color .12s,transform .12s}
+.quien button:hover{border-color:var(--accent);transform:translateY(-2px)}
+.yo{font-size:11px;font-weight:600;letter-spacing:.04em;background:rgba(255,255,255,.14);color:var(--deep-text);
+  border:0;border-radius:20px;padding:5px 11px;cursor:pointer;font-family:var(--sans)}
+.yo:hover{background:rgba(255,255,255,.26)}
+.marcas{display:flex;gap:5px;flex-wrap:wrap;margin:4px 0 0}
+.sello-p{font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:3px 8px;border-radius:20px;
+  background:var(--accent-soft);color:var(--accent)}
+.sello-p.ambos{background:var(--good);color:#fff}
+.sello-p.otro{background:var(--ochre-bg);color:var(--ochre)}
+.aviso-otro{position:absolute;z-index:4;left:10px;top:10px;font-size:11px;font-weight:700;letter-spacing:.04em;
+  padding:5px 9px;border-radius:20px;background:var(--good);color:#fff}
 
 .btn{background:var(--accent);color:#fff;border:0;border-radius:7px;padding:11px 15px;font-weight:600;font-size:14px;
   cursor:pointer;text-decoration:none;display:inline-block}
@@ -181,9 +200,15 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 <body>
 <header><div class="cab">
   <div><h1>Piso sí, piso no</h1><p class="dia" id="dia">Zaragoza</p></div>
-  <span class="ver" id="ver">v 14 sep 10:06</span>
+  <button class="yo" id="yo" hidden></button>
+  <span class="ver" id="ver">v 14 sep 10:15</span>
   <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"></nav>
 </div></header>
+<div class="quien" id="quien" hidden><div class="caja">
+  <h2>¿Quién eres?</h2>
+  <p>Para no mezclar tus decisiones con las de la otra persona.</p>
+  <div class="dos"><button data-yo="inigo">Íñigo</button><button data-yo="laura">Laura</button></div>
+</div></div>
 <main id="vista"><div class="panel"><p>Cargando los pisos…</p></div></main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
@@ -198,7 +223,16 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     der:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>'};
 
   try{E=JSON.parse(localStorage.getItem(CLAVE)||'[]');}catch(e){}
-  var ORDEN=[], COPIA={};
+  var ORDEN=[], COPIA={}, YO='', PERSONAS={inigo:'Íñigo', laura:'Laura'};
+  try{YO=localStorage.getItem('radar-quien')||'';}catch(e){}
+  function otro(){return YO==='inigo'?'laura':'inigo';}
+  function nombre(q){return PERSONAS[q]||q;}
+  function elegir(q){
+    YO=q; try{localStorage.setItem('radar-quien',q);}catch(e){}
+    document.getElementById('quien').hidden=true;
+    var b=document.getElementById('yo'); b.hidden=false; b.textContent=nombre(q);
+    pintar();
+  }
   try{ORDEN=JSON.parse(localStorage.getItem('radar-orden-fav')||'[]');}catch(e){}
   try{COPIA=JSON.parse(localStorage.getItem('radar-copia-fav')||'{}');}catch(e){}
   function guardarFav(){
@@ -218,7 +252,15 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     D.pisos.forEach(function(p){porId[p.id]=p;});
     (D.fuera_de_filtro||[]).forEach(function(p){porId[p.id]=p;FUERA[p.id]=p.motivo_fuera||'Ya no cumple tus filtros';});
   }
-  function vigente(id){var d=null;E.forEach(function(x){if(x.id===id)d=x.d==='reset'?null:x.d;});return d;}
+  function vigente(id,q){
+    q=q||YO; var d=null;
+    E.forEach(function(x){ if(x.id===id&&(x.q||'inigo')===q) d=x.d==='reset'?null:x.d; });
+    return d;
+  }
+  function opinan(id){
+    var o={}; ['inigo','laura'].forEach(function(q){var v=vigente(id,q); if(v) o[q]=v;});
+    return o;
+  }
   function orig(p){return p.lat!=null&&p.lng!=null?p.lat+','+p.lng:encodeURIComponent((p.direccion||'')+', Zaragoza');}
   function mapaUrl(p){return 'https://www.google.com/maps/search/?api=1&query='+orig(p);}
   function ruta(p){var c=D.circe,d=c&&c.lat!=null?c.lat+','+c.lng:encodeURIComponent('Avenida Ranillas 3D, 50018 Zaragoza');
@@ -234,7 +276,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   function tagFoto(f){var t=String(f||"").split("|")[1];return t||"";}
   function pila(){
     var o={nuevo:0,baja:1,subida:2,sigue:3};
-    return D.pisos.filter(function(p){return !vigente(p.id)&&!FUERA[p.id];}).sort(function(a,b){
+    return D.pisos.filter(function(p){return !vigente(p.id,YO)&&!FUERA[p.id];}).sort(function(a,b){
       return ((o[a.estado]==null?4:o[a.estado])-(o[b.estado]==null?4:o[b.estado]))||((b.puntuacion||0)-(a.puntuacion||0));});
   }
   function porDec(d){
@@ -268,6 +310,9 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
       h+='<button class="flecha b" data-paso="1" data-id="'+esc(p.id)+'" aria-label="Foto siguiente"'+(i===fs.length-1?' disabled':'')+'>'+ICON.der+'</button>';
       h+='<span class="nfoto">'+(i+1)+' / '+fs.length+'</span>';
     }
+    var vo=vigente(p.id,otro());
+    if(vo==='si') h+='<span class="aviso-otro">A '+esc(nombre(otro()))+' le gusta</span>';
+    else if(vo==='no') h+='<span class="aviso-otro" style="background:var(--brick)">'+esc(nombre(otro()))+' lo descartó</span>';
     if(p.estado==='nuevo') h+='<span class="etiqueta">Nuevo</span>';
     else if(p.estado==='baja') h+='<span class="etiqueta baja">Baja de precio</span>';
     h+='<span class="sello si">Me gusta</span><span class="sello no">Ni de coña</span></div></div>';
@@ -363,7 +408,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   }
 
   function decidir(p,d,apuntar){
-    var x={id:p.id,d:d,dir:p.direccion||'',t:Date.now()};
+    var x={id:p.id,d:d,q:YO,dir:p.direccion||'',t:Date.now()};
     E.push(x); if(apuntar!==false) hist.push(x);
     if(d==='si'){
       COPIA[p.id]={piso:p,visto:D.fecha||hoy(),precio:p.precio};
@@ -375,13 +420,13 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   function deshacer(){
     var x=hist.pop(); if(!x) return;
     var i=E.indexOf(x);
-    if(i>=0) E.splice(i,1); else E.push({id:x.id,d:'reset',dir:x.dir,t:Date.now()});
+    if(i>=0) E.splice(i,1); else E.push({id:x.id,d:'reset',q:YO,dir:x.dir,t:Date.now()});
     guardar(); tab='decidir'; pintar();
   }
   function cambiar(p,d){
     if(!p) return;
     for(var i=E.length-1;i>=0;i--){
-      if(E[i].id===p.id){
+      if(E[i].id===p.id&&(E[i].q||'inigo')===YO){
         E.splice(i,1);
         if(vigente(p.id)===d||(d==='reset'&&!vigente(p.id))){guardar();pintar();return;}
         break;
@@ -399,14 +444,22 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     return {id:id, direccion:dir||'Piso guardado', zona:'', fotos:[],
             url:'https://www.idealista.com/inmueble/'+String(id).split('-')[1]+'/'};
   }
+  function gustaA(id){
+    var o=opinan(id), q=[];
+    if(o.inigo==='si') q.push('inigo');
+    if(o.laura==='si') q.push('laura');
+    return q;
+  }
   function favoritos(){
-    var v={}, out=[];
-    ORDEN.forEach(function(id){ if(!v[id]&&vigente(id)==='si'){v[id]=1;out.push(ficha(id));} });
+    var v={}, sueltos=[];
+    ORDEN.forEach(function(id){ if(!v[id]&&gustaA(id).length){v[id]=1;sueltos.push(id);} });
     for(var i=E.length-1;i>=0;i--){
       var id=E[i].id;
-      if(!v[id]&&vigente(id)==='si'){v[id]=1;out.push(ficha(id));}
+      if(!v[id]&&gustaA(id).length){v[id]=1;sueltos.push(id);}
     }
-    return out;
+    var ambos=[], uno=[];
+    sueltos.forEach(function(id){ (gustaA(id).length===2?ambos:uno).push(id); });
+    return ambos.concat(uno).map(ficha);
   }
   function sincronizar(){
     favoritos().forEach(function(p){
@@ -422,9 +475,14 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     guardarFav();
   }
   function moverFav(dir, id){
-    var i=ORDEN.indexOf(id); if(i<0) return;
-    var j=i+dir; if(j<0||j>=ORDEN.length) return;
-    var t=ORDEN[i]; ORDEN[i]=ORDEN[j]; ORDEN[j]=t;
+    var lista=favoritos().map(function(p){return p.id;});
+    var i=lista.indexOf(id), j=i+dir;
+    if(i<0||j<0||j>=lista.length) return;
+    if(gustaA(lista[i]).length!==gustaA(lista[j]).length) return;
+    var a=ORDEN.indexOf(lista[i]), b=ORDEN.indexOf(lista[j]);
+    if(a<0){ORDEN.push(lista[i]);a=ORDEN.length-1;}
+    if(b<0){ORDEN.push(lista[j]);b=ORDEN.length-1;}
+    var t=ORDEN[a]; ORDEN[a]=ORDEN[b]; ORDEN[b]=t;
     guardarFav(); pintar();
   }
   function estadoFav(p){
@@ -446,6 +504,10 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
       +(st.caido?' tachado':'')+'">'+eur(p.precio)+'</span></div>';
     h+='<p class="z">'+esc(p.zona||'')+(p.m2?', '+p.m2+' m²':'')+(p.habitaciones?', '+p.habitaciones+' hab':'')
       +(p.distancia_km!=null?', a '+km(p.distancia_km)+' km de CIRCE':'')+'</p>';
+    var g=gustaA(p.id);
+    h+='<div class="marcas">'+(g.length===2
+      ? '<span class="sello-p ambos">Os gusta a los dos</span>'
+      : '<span class="sello-p'+(g[0]===YO?'':' otro')+'">Le gusta a '+esc(nombre(g[0]))+'</span>')+'</div>';
     if(st.caido) h+='<p class="cambio" style="color:var(--brick)">'+esc(st.txt)+'</p>';
     else if(st.txt!=='Sigue publicado') h+='<p class="cambio" style="color:'+st.col+'">'+esc(st.txt)+'</p>';
     h+='<div class="acc">';
@@ -520,7 +582,13 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 
   document.addEventListener('click',function(e){
     var t=e.target.closest('[data-tab]'); if(t){tab=t.dataset.tab;pintar();}
+    var q=e.target.closest('[data-yo]'); if(q) elegir(q.dataset.yo);
   });
+  document.getElementById('yo').onclick=function(){
+    document.getElementById('quien').hidden=false;
+  };
+  if(YO){ var by=document.getElementById('yo'); by.hidden=false; by.textContent=nombre(YO); }
+  else document.getElementById('quien').hidden=false;
   document.addEventListener('keydown',function(e){
     if(tab!=='decidir'||!arriba) return;
     if(e.key==='ArrowRight') volar(arriba.el,arriba.p,'si');
