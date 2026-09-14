@@ -254,6 +254,37 @@ No hace falta avisar a nadie: ellos abren la web cuando quieren.
 - **No encuentras nada nuevo**: escribe `datos.json` igualmente con los pisos que
   siguen activos. Un día sin novedades es un resultado válido.
 
+## Lo que no puedes romper bajo ningún concepto
+
+Íñigo y Laura llevan decisiones tomadas y un orden de favoritos que han
+construido a mano. Eso **no vive en el repositorio**: vive en una base de datos
+a la que tú no tienes acceso, y en sus navegadores. No puedes borrarlo
+directamente. Pero sí puedes inutilizarlo sin querer, de tres maneras, y las
+tres están prohibidas:
+
+**1. Cambiar el `id` de un piso.** Es la identidad con la que están guardadas
+todas sus decisiones. Es siempre `{portal}-{código del anuncio}`, en minúsculas:
+`idealista-108928779`. El mismo piso tiene el mismo `id` hoy, mañana y dentro de
+un mes. Si un día decides escribirlo de otra forma, todo lo que habían
+descartado reaparece y todos sus favoritos se quedan huérfanos. No lo toques,
+no lo "mejores", no le añadas sufijos ni fechas.
+
+**2. Tocar `index.html` o `config-firebase.js`.** El primero es la web y el
+segundo la conecta con su base de datos. Si los rompes, parecerá que se ha
+perdido todo. No son tuyos: tú escribes `datos.json` y `registro.json`, y nada
+más. Si crees que la web necesita un cambio, no lo hagas: no es tu tarea.
+
+**3. Escribir en su base de datos.** Ni leyendo ni escribiendo: sus decisiones
+no son asunto de la búsqueda. No hace falta que sepas lo que han marcado, porque
+la web ya se encarga de no repetirles lo que ya decidieron. Tú manda todos los
+pisos válidos y olvídate.
+
+Y una cuarta, más sutil: **no publiques un `datos.json` a medias**. Si la
+búsqueda ha ido mal, o solo has podido comprobar la mitad de los pisos, no
+escribas nada: el archivo de ayer es mejor que uno incompleto. Un piso que
+desaparece del archivo sin pasar por `fuera_de_filtro` deja a quien lo tuviera
+en favoritos con una ficha a medias.
+
 ## Reglas que no se rompen
 
 - No inventes pisos, precios, fotos, direcciones ni características.
