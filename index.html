@@ -203,7 +203,9 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   function urlFoto(f){
     if(!f) return "";
     var r=String(f).split("|")[0];
-    return r.indexOf("http")===0?r:((D.foto_base||"")+r+".webp");
+    if(r.indexOf("http")===0) return r;
+    var i=r.indexOf("/");
+    return (D.foto_base||"")+r.slice(0,i)+(D.foto_mid||"/")+r.slice(i+1)+".webp";
   }
   function tagFoto(f){var t=String(f||"").split("|")[1];return t||"";}
   function pila(){
