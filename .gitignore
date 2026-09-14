@@ -1,0 +1,4 @@
+*.json.key
+sa.json
+*service-account*
+*adminsdk*
