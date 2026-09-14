@@ -203,7 +203,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   <div><h1>Piso sí, piso no</h1><p class="dia" id="dia">Zaragoza</p></div>
   <button class="yo" id="yo" hidden></button>
   <span class="ver" id="estado-nube"></span>
-  <span class="ver" id="ver">v 14 sep 10:22</span>
+  <span class="ver" id="ver">v 14 sep 10:25</span>
   <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"></nav>
 </div></header>
 <div class="quien" id="quien" hidden><div class="caja">
@@ -227,14 +227,26 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 
   try{E=JSON.parse(localStorage.getItem(CLAVE)||'[]');}catch(e){}
   var ORDEN=[], COPIA={}, YO='', PERSONAS={inigo:'Íñigo', laura:'Laura'};
-  var SUS=[], COPIA_OTRO={}, nube=null, pendiente=null;
+  var SUS=[], COPIA_OTRO={}, nube=null, pendiente=null, yaEscribi=false;
   function eventos(){return SUS.length?E.concat(SUS):E;}
   try{YO=localStorage.getItem('radar-quien')||'';}catch(e){}
   function otro(){return YO==='inigo'?'laura':'inigo';}
   function nombre(q){return PERSONAS[q]||q;}
   function elegir(q){
+    var cambio = YO && YO!==q;
     YO=q; try{localStorage.setItem('radar-quien',q);}catch(e){}
+    if(cambio){ E=[]; COPIA={}; SUS=[]; COPIA_OTRO={}; yaEscribi=false; guardarLocal(); }
     document.getElementById('quien').hidden=true;
+    if(nube){
+      ['inigo','laura'].forEach(function(x){
+        nube.collection('radar').doc(x).get().then(function(d){
+          var v=d.data(); if(!v) return;
+          if(x===YO){ if(!yaEscribi){E=v.decisiones||[];COPIA=v.copias||{};guardarLocal();} }
+          else { SUS=v.decisiones||[]; COPIA_OTRO=v.copias||{}; }
+          pintar();
+        }).catch(function(){});
+      });
+    }
     var b=document.getElementById('yo'); b.hidden=false; b.textContent=nombre(q);
     pintar();
   }
@@ -605,6 +617,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   function subir(){
     if(!nube||!YO) return;
     clearTimeout(pendiente);
+    yaEscribi=true;
     pendiente=setTimeout(function(){
       nube.collection('radar').doc(YO).set({decisiones:E, copias:COPIA, visto:Date.now()})
         .catch(function(e){console.warn('no se pudo guardar en la nube', e.code||e);});
@@ -623,7 +636,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
           nube.collection('radar').doc(q).onSnapshot(function(d){
             var v=d.data(); if(!v) return;
             if(q===YO){
-              if((v.decisiones||[]).length>E.length){ E=v.decisiones; COPIA=v.copias||COPIA; guardarLocal(); }
+              if(!yaEscribi){ E=v.decisiones||[]; COPIA=v.copias||{}; guardarLocal(); }
             }else{
               SUS=v.decisiones||[]; COPIA_OTRO=v.copias||{};
             }
