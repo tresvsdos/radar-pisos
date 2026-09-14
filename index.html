@@ -153,9 +153,10 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 .ordenar button:disabled{opacity:.3;cursor:default}
 .caido{font-size:12.5px;font-weight:600;color:var(--brick);margin:3px 0 0}
 .cambio{font-size:12.5px;font-weight:600;margin:3px 0 0}
-.avisofav{background:var(--brick-soft);border-left:4px solid var(--brick);border-radius:8px;padding:12px 14px;margin-bottom:14px}
-.avisofav b{display:block;font-size:14px;margin-bottom:3px}
-.avisofav p{margin:0;font-size:13px;color:var(--text)}
+.fila.caida{background:var(--brick-soft);border-color:var(--brick)}
+.fila.caida .mini{opacity:.45}
+.fila.caida h3,.fila.caida .p,.fila.caida .z{color:var(--brick)}
+.fila.caida .pos{background:var(--brick);color:#fff}
 .nota-orden{font-size:12.5px;color:var(--muted);margin:0 0 10px}
 
 .envio{position:sticky;bottom:0;background:var(--surface);border-top:1px solid var(--line);
@@ -424,14 +425,15 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   }
   function favHTML(p,i,n){
     var f=(p.fotos||[]).filter(Boolean)[0], st=estadoFav(p), top=i<3;
-    var h='<div class="fila'+(st.caido?' fuera':'')+'">';
-    h+='<div class="pos'+(top?' top':'')+'">'+(i+1)+'</div>';
+    var h='<div class="fila'+(st.caido?' caida':'')+'"'+(st.caido?' title="'+esc(st.txt)+'"':'')+'>';
+    h+='<div class="pos'+(top&&!st.caido?' top':'')+'">'+(i+1)+'</div>';
     h+='<div class="mini">'+(f?'<img src="'+esc(urlFoto(f))+'" alt="" referrerpolicy="no-referrer" onerror="this.remove()">':'')+'</div>';
-    h+='<div class="cuerpo"><div class="alto"><h3>'+esc(p.direccion)+'</h3><span class="p">'+eur(p.precio)+'</span></div>';
+    var t=st.caido?' class="tachado"':'';
+    h+='<div class="cuerpo"><div class="alto"><h3'+t+'>'+esc(p.direccion)+'</h3><span class="p'
+      +(st.caido?' tachado':'')+'">'+eur(p.precio)+'</span></div>';
     h+='<p class="z">'+esc(p.zona||'')+(p.m2?', '+p.m2+' m²':'')+(p.habitaciones?', '+p.habitaciones+' hab':'')
       +(p.distancia_km!=null?', a '+km(p.distancia_km)+' km de CIRCE':'')+'</p>';
-    h+='<p class="'+(st.caido?'caido':'cambio')+'"'+(st.col?' style="color:'+st.col+'"':'')+'>'
-      +(top?'Revisado hoy. ':'')+esc(st.txt)+'</p>';
+    if(!st.caido&&st.txt!=='Sigue publicado') h+='<p class="cambio" style="color:'+st.col+'">'+esc(st.txt)+'</p>';
     h+='<div class="acc">';
     if(p.url) h+='<a href="'+esc(p.url)+'" target="_blank" rel="noreferrer">Abrir anuncio</a>';
     h+='<a href="'+esc(ruta(p))+'" target="_blank" rel="noreferrer">Ruta a CIRCE</a>';
@@ -531,15 +533,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
       }
     }else if(tab==='si'){
       if(F.length){
-        var caidos=F.slice(0,3).filter(function(p){return estadoFav(p).caido;});
-        var h='';
-        if(caidos.length){
-          h+='<div class="avisofav"><b>'+(caidos.length===1?'Uno de tus tres primeros ya no está'
-            :caidos.length+' de tus tres primeros ya no están')+'</b><p>'
-            +caidos.map(function(p){return esc(p.direccion);}).join(', ')
-            +'. No aparece en la búsqueda de hoy, así que lo han quitado o ha dejado de cumplir los filtros.</p></div>';
-        }
-        h+='<p class="nota-orden">Ordénalos con las flechas: el primero es el que más te gusta. Los tres primeros se revisan cada día.</p>';
+        var h='<p class="nota-orden">Ordénalos con las flechas: el primero es el que más te gusta.</p>';
         v.innerHTML=h+F.map(function(p,i){return favHTML(p,i,F.length);}).join('');
       }else{
         v.innerHTML='<div class="panel"><h2>Sin favoritos todavía</h2><p>Arrastra a la derecha los pisos que te gusten.</p></div>';
