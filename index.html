@@ -15,7 +15,7 @@
   --bg:#EDF0EF; --surface:#FFF; --surface-2:#E3E8E7; --deep:#23434E; --deep-text:#EAF2F3;
   --text:#16262B; --muted:#5B6F70; --line:#CFD9D8; --line-soft:#DFE6E5;
   --accent:#2E7286; --accent-soft:#DCEAEE; --brick:#A6482F; --brick-soft:#F2DFD9;
-  --ochre:#8A6212; --ochre-bg:#F3E4C4; --good:#2C6A55;
+  --ochre:#8A6212; --ochre-bg:#F3E4C4; --good:#2C6A55; --good-soft:#D8E8E1;
   --shadow:0 2px 4px rgba(22,38,43,.06),0 18px 40px rgba(22,38,43,.15);
   --ring:0 0 0 3px rgba(46,114,134,.4);
   --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -25,14 +25,14 @@
   --bg:#0E181B; --surface:#17262B; --surface-2:#1E3138; --deep:#0A1316; --deep-text:#DCE9EB;
   --text:#E4EDEC; --muted:#93A8A9; --line:#2A3F45; --line-soft:#223339;
   --accent:#6FBACE; --accent-soft:#1C3B45; --brick:#E08468; --brick-soft:#3B211A;
-  --ochre:#E3B45F; --ochre-bg:#3A2E12; --good:#6FBFA0;
+  --ochre:#E3B45F; --ochre-bg:#3A2E12; --good:#6FBFA0; --good-soft:#18342C;
   --shadow:0 2px 4px rgba(0,0,0,.4),0 18px 42px rgba(0,0,0,.5); --ring:0 0 0 3px rgba(111,186,206,.45);
 }}
 :root[data-theme="dark"]{
   --bg:#0E181B; --surface:#17262B; --surface-2:#1E3138; --deep:#0A1316; --deep-text:#DCE9EB;
   --text:#E4EDEC; --muted:#93A8A9; --line:#2A3F45; --line-soft:#223339;
   --accent:#6FBACE; --accent-soft:#1C3B45; --brick:#E08468; --brick-soft:#3B211A;
-  --ochre:#E3B45F; --ochre-bg:#3A2E12; --good:#6FBFA0;
+  --ochre:#E3B45F; --ochre-bg:#3A2E12; --good:#6FBFA0; --good-soft:#18342C;
   --shadow:0 2px 4px rgba(0,0,0,.4),0 18px 42px rgba(0,0,0,.5); --ring:0 0 0 3px rgba(111,186,206,.45);
 }
 *{box-sizing:border-box}
@@ -145,28 +145,43 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
 .panel h2{font-family:var(--slab);font-size:21px;margin:0 0 6px;font-weight:600}
 .panel p{margin:0;color:var(--muted)}
-.fila{display:flex;gap:13px;background:var(--surface);border:1px solid var(--line-soft);border-radius:10px;padding:11px;margin-bottom:10px}
-.mini{width:96px;height:96px;border-radius:7px;overflow:hidden;flex-shrink:0;background:var(--surface-2)}
+.fila{display:flex;gap:12px;background:var(--surface);border:1px solid var(--line-soft);border-radius:10px;padding:11px;margin-bottom:10px;align-items:flex-start}
+/* La miniatura es un boton: abre la ficha entera otra vez. */
+.mini{width:92px;height:92px;border-radius:7px;overflow:hidden;flex-shrink:0;background:var(--surface-2);
+  position:relative;border:0;padding:0;display:block;cursor:pointer}
 .mini img{width:100%;height:100%;object-fit:cover;display:block}
+.mini .lupa{position:absolute;inset:auto 0 0 0;background:rgba(11,20,23,.72);color:#fff;
+  font-size:10.5px;font-weight:700;letter-spacing:.03em;padding:3px 0;opacity:0;transition:opacity .15s}
+.mini:hover .lupa,.mini:focus-visible .lupa{opacity:1}
+.mini:focus-visible{outline:none;box-shadow:var(--ring)}
 .fila .cuerpo{flex:1;min-width:0}
-.fila h3{font-family:var(--slab);font-size:17px;margin:0;font-weight:600}
-.fila .p{font-family:var(--mono);font-size:16px;font-weight:600;white-space:nowrap}
+/* La direccion nunca parte en cuatro lineas: se corta con puntos suspensivos. */
+.fila h3{font-family:var(--slab);font-size:17px;margin:0;font-weight:600;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.fila .p{font-family:var(--mono);font-size:16px;font-weight:600;white-space:nowrap;flex-shrink:0}
 .fila .z{margin:3px 0 0;font-size:12.5px;color:var(--muted)}
-.acc{display:flex;flex-wrap:wrap;gap:13px;margin-top:8px}
+.acc{display:flex;flex-wrap:wrap;align-items:center;gap:13px;margin-top:9px}
+.acc .ordenar{margin-left:auto}
 .acc a,.acc button{font-size:12.5px;font-weight:600;color:var(--accent);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
 .acc button.rojo{color:var(--brick)}
 .tachado{text-decoration:line-through;color:var(--muted)}
-.fila.corta{align-items:center;padding:7px 10px;gap:10px;margin-bottom:6px}
+.fila.corta{align-items:flex-start;padding:9px 10px;gap:10px;margin-bottom:7px}
 .fila.corta .mini{width:56px;height:56px;border-radius:5px}
 .fila.corta h3{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fila.corta .p{font-size:14px}
 .fila.corta .z{font-size:11.5px;margin:1px 0 0}
 .fila.corta .acc{margin-top:3px;gap:10px}
 .fila.corta .acc a,.fila.corta .acc button{font-size:11.5px}
-.pos{flex-shrink:0;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+.pos{flex-shrink:0;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;margin:1px 0;
   font-family:var(--mono);font-size:12px;font-weight:600;background:var(--surface-2);color:var(--muted)}
 .pos.top{background:var(--accent);color:#fff}
-.ordenar{display:flex;flex-direction:column;gap:3px;flex-shrink:0;justify-content:center}
+.rank{display:flex;flex-direction:column;align-items:center;gap:2px;flex-shrink:0;width:28px}
+.rank button{width:28px;height:20px;border:1px solid var(--line);background:var(--surface);color:var(--muted);
+  border-radius:5px;font-size:9px;line-height:1;cursor:pointer;padding:0}
+.rank button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.rank button:disabled{opacity:.25;cursor:default}
+.rank button:focus-visible{outline:none;box-shadow:var(--ring)}
+.ordenar{display:flex;gap:4px;flex-shrink:0}
 .ordenar button{width:26px;height:22px;border:1px solid var(--line);background:var(--surface);color:var(--muted);
   border-radius:5px;cursor:pointer;font-size:11px;line-height:1;padding:0}
 .ordenar button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
@@ -181,6 +196,25 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 .wrap{max-width:1020px;margin:0 auto;padding:0 20px}
 .aviso-datos{background:var(--ochre-bg);color:var(--ochre);border-radius:8px;padding:10px 13px;
   margin:14px 0 0;font-size:13px;font-weight:600}
+/* Ficha reabierta desde una lista: la misma tarjeta grande, en una capa encima. */
+.ficha-ov{position:fixed;inset:0;z-index:65;background:rgba(11,20,23,.8);backdrop-filter:blur(4px);
+  display:flex;align-items:flex-start;justify-content:center;padding:14px;overflow:auto;
+  padding-top:max(14px,env(safe-area-inset-top));padding-bottom:max(14px,env(safe-area-inset-bottom))}
+.ficha-ov .caja-f{width:100%;max-width:940px;position:relative;margin:auto}
+.ficha-ov .tarjeta{position:static;box-shadow:var(--shadow);cursor:default;transform:none!important}
+.ficha-ov .cerrar{position:absolute;top:-6px;right:-6px;z-index:3;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:17px;line-height:1;
+  cursor:pointer;box-shadow:var(--shadow)}
+.ficha-ov .cerrar:focus-visible{outline:none;box-shadow:var(--ring)}
+.ficha-bot{display:flex;gap:9px;margin-top:11px;flex-wrap:wrap;
+  position:sticky;bottom:0;background:var(--bg);padding:10px 0 2px;
+  box-shadow:0 -10px 14px -8px rgba(11,20,23,.35)}
+.ficha-bot button{flex:1;min-width:130px;border-radius:9px;padding:12px 14px;font-size:14px;font-weight:700;
+  font-family:inherit;cursor:pointer;border:1.5px solid var(--line);background:var(--surface);color:var(--text)}
+.ficha-bot button.si{background:var(--good);border-color:var(--good);color:#fff}
+.ficha-bot button.no{background:var(--surface);border-color:var(--brick);color:var(--brick)}
+.ficha-bot button[disabled]{opacity:.45;cursor:default}
+.ficha-bot button:focus-visible{outline:none;box-shadow:var(--ring)}
 .match{position:fixed;inset:0;z-index:70;background:rgba(11,20,23,.82);backdrop-filter:blur(4px);
   display:flex;align-items:center;justify-content:center;padding:22px;animation:entra .25s ease}
 @keyframes entra{from{opacity:0}to{opacity:1}}
@@ -218,11 +252,17 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
 .yo{font-size:11px;font-weight:600;letter-spacing:.04em;background:rgba(255,255,255,.14);color:var(--deep-text);
   border:0;border-radius:20px;padding:5px 11px;cursor:pointer;font-family:var(--sans)}
 .yo:hover{background:rgba(255,255,255,.26)}
-.marcas{display:flex;gap:5px;flex-wrap:wrap;margin:4px 0 0}
-.sello-p{font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:3px 8px;border-radius:20px;
-  background:var(--accent-soft);color:var(--accent)}
-.sello-p.ambos{background:var(--good);color:#fff}
-.sello-p.otro{background:var(--ochre-bg);color:var(--ochre)}
+/* Los dos nombres, en verde o en rojo, en cada anuncio ya decidido. */
+.nombres{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 0}
+.nom{font-size:11.5px;font-weight:700;padding:3px 9px 3px 7px;border-radius:20px;
+  display:inline-flex;align-items:center;gap:4px;border:1px solid transparent;white-space:nowrap}
+.nom::before{font-size:10px;line-height:1}
+.nom.si{background:var(--good-soft);color:var(--good);border-color:var(--good)}
+.nom.si::before{content:"\2713"}
+.nom.no{background:var(--brick-soft);color:var(--brick);border-color:var(--brick)}
+.nom.no::before{content:"\2715"}
+.nom.pend{background:transparent;color:var(--muted);border-color:var(--line);border-style:dashed;font-weight:600}
+.nom.pend::before{content:"\00B7"}
 
 .btn{background:var(--accent);color:#fff;border:0;border-radius:7px;padding:11px 15px;font-weight:600;font-size:14px;
   cursor:pointer;text-decoration:none;display:inline-block}
@@ -243,6 +283,18 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   .der{overflow:visible;padding:16px 17px 18px}
   .dir{font-size:21px} .precio b{font-size:23px}
   .tabla{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  /* En el movil el ancho es oro: miniatura y huecos mas pequenos para que la
+     direccion y los enlaces respiren. */
+  .fila{gap:10px;padding:10px}
+  .mini{width:78px;height:78px}
+  .fila.corta .mini{width:54px;height:54px}
+  .acc{gap:11px;margin-top:8px}
+  .fila h3{font-size:16px}
+  .fila .p{font-size:15px}
+  .rank{width:26px}
+  .rank button{width:26px}
 }
 @media (prefers-reduced-motion:reduce){.tarjeta,.redondo,.flecha{transition:none!important}}
 </style>
@@ -269,6 +321,11 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   <p class="dat" id="match-dat"></p>
   <div class="bot"><button class="btn" id="match-seguir">Seguir viendo</button>
   <a class="btn sec" id="match-anuncio" target="_blank" rel="noreferrer">Abrir anuncio</a></div>
+</div></div>
+<div class="ficha-ov" id="ficha-ov" hidden><div class="caja-f">
+  <button class="cerrar" id="ficha-cerrar" aria-label="Cerrar">&#10005;</button>
+  <article class="tarjeta" id="ficha-tarjeta"></article>
+  <div class="ficha-bot" id="ficha-bot"></div>
 </div></div>
 <div class="wrap"><p class="aviso-datos" id="aviso-datos" hidden>La búsqueda de hoy no ha llegado bien, así que estás viendo la última lista buena. Tus decisiones no se han tocado.</p></div>
 <main id="vista"><div class="panel"><p>Cargando los pisos…</p></div></main>
@@ -340,8 +397,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   try{ORDEN=JSON.parse(localStorage.getItem('radar-orden-fav')||'[]');}catch(e){}
   try{COPIA=JSON.parse(localStorage.getItem('radar-copia-fav')||'{}');}catch(e){}
   function guardarFav(){
-    try{localStorage.setItem('radar-orden-fav',JSON.stringify(ORDEN));
-        localStorage.setItem('radar-orden-fav',JSON.stringify(ORDEN));}catch(e){}
+    try{localStorage.setItem('radar-orden-fav',JSON.stringify(ORDEN));}catch(e){}
     guardarLocal(); subir();
   }
   function hoy(){return new Date().toISOString().slice(0,10);}
@@ -440,7 +496,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
       +dato('Andando',(p.andando_min!=null?p.andando_min+' min':'—'))
       +dato('En bici',(p.bici_min!=null?p.bici_min+' min':'—'))
       +dato('Puntuación',(p.puntuacion!=null?p.puntuacion+' / 100':'—'))
-      +dato('Ficha',n+' de '+total)
+      +(n?dato('Ficha',n+' de '+total):'')
       +'</dl>';
     if(p.lo_mejor) h+='<p class="frase mejor"><strong>Lo mejor:</strong> '+esc(p.lo_mejor)+'</p>';
     if(p.ojo) h+='<p class="frase ojo"><strong>Ojo:</strong> '+esc(p.ojo)+'</p>';
@@ -511,7 +567,8 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     var i=tope((foto[p.id]||0)+paso,0,fs.length-1);
     if(i===(foto[p.id]||0)) return;
     foto[p.id]=i;
-    var el=arriba&&arriba.p&&arriba.p.id===p.id?arriba.el:null;
+    var el = (FICHA&&FICHA.p&&FICHA.p.id===p.id) ? FICHA.el
+           : (arriba&&arriba.p&&arriba.p.id===p.id ? arriba.el : null);
     if(!el){ pintar(); return; }
     var v=el.querySelector('.visor'), img=v&&v.querySelector('img');
     var cajaMapa=v&&v.querySelector('.mapa'), ley=v&&v.querySelector('.leyenda');
@@ -584,6 +641,47 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     return q;
   }
   function esMatch(id){return gustaA(id).length===2;}
+  // Los dos nombres, verde si le gusta, rojo si no, gris si todavia no ha mirado.
+  // Solo en las listas: en la pila de decidir sigue sin verse la opinion del otro.
+  function nombresHTML(id){
+    return '<div class="nombres">'+['inigo','laura'].map(function(q){
+      var d=vigente(id,q), c=d==='si'?'si':d==='no'?'no':'pend';
+      return '<span class="nom '+c+'">'+esc(nombre(q))+'</span>';
+    }).join('')+'</div>';
+  }
+  var FICHA=null;
+  function cerrarFicha(){
+    var ov=document.getElementById('ficha-ov');
+    limpiarMapas();   // si la ficha traia mapa, se queda colgado y va sumando
+    FICHA=null; ov.hidden=true;
+    document.getElementById('ficha-tarjeta').innerHTML='';
+  }
+  function abrirFicha(id){
+    var p=porId[id]||ficha(id); if(!p) return;
+    var ov=document.getElementById('ficha-ov'), caja=document.getElementById('ficha-tarjeta');
+    caja.className='tarjeta'+(PLEGADO?' plegada':'');
+    caja.innerHTML=tarjeta(p,0,0);
+    FICHA={el:caja,p:p};
+    ov.hidden=false;
+    var fs=pases(p), i=Math.min(foto[p.id]||0,Math.max(0,fs.length-1));
+    if((fs[i]||{}).t==='m'){ caja.dataset.conMapa='1'; ponerMapa(caja,p,0); }
+    caja.querySelectorAll('[data-paso]').forEach(function(b){
+      b.onclick=function(ev){ev.stopPropagation();pasarFoto(p,Number(b.dataset.paso));};
+    });
+    var pl=caja.querySelector('[data-plegar]');
+    if(pl){ pl.onclick=function(ev){ev.stopPropagation();caja.classList.toggle('plegada');
+      pl.querySelector('span').textContent=caja.classList.contains('plegada')?'Más datos':'Menos datos';};
+      pl.querySelector('span').textContent=PLEGADO?'Más datos':'Menos datos'; }
+    var mio=vigente(id,YO), bot=document.getElementById('ficha-bot');
+    bot.innerHTML='<button class="si"'+(mio==='si'?' disabled':'')+' data-f="si">'
+        +(mio==='si'?'Ya está en favoritos':'Me gusta')+'</button>'
+      +'<button class="no"'+(mio==='no'?' disabled':'')+' data-f="no">'
+        +(mio==='no'?'Ya lo descartaste':'Ni de coña')+'</button>'
+      +(mio?'<button data-f="reset">Volver a decidir</button>':'');
+    bot.querySelectorAll('[data-f]').forEach(function(b){
+      b.onclick=function(){ cerrarFicha(); cambiar(p,b.dataset.f); };
+    });
+  }
   // 0 = nos gusta a los dos · 1 = solo a mí · 2 = a la otra persona, y yo ya decidí que no
   // -1 = no se enseña todavía, porque yo aún no he decidido
   function grupoFav(id){
@@ -639,41 +737,46 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     if(ant!=null&&act!=null&&act>ant) return {txt:'Ha subido de '+eur(ant)+' a '+eur(act), col:'var(--brick)'};
     return {txt:'Sigue publicado', col:'var(--muted)'};
   }
+  function miniHTML(p){
+    var f=(p.fotos||[]).filter(Boolean)[0];
+    return '<button class="mini" data-ver="'+esc(p.id)+'" aria-label="Ver otra vez '+esc(p.direccion)+'">'
+      +(f?'<img src="'+esc(urlFoto(f))+'" alt="" referrerpolicy="no-referrer" onerror="this.remove()">':'')
+      +'<span class="lupa">Ver</span></button>';
+  }
   function favHTML(p,i,n){
-    var f=(p.fotos||[]).filter(Boolean)[0], st=estadoFav(p), top=i<3;
+    var st=estadoFav(p), top=i<3;
     var h='<div class="fila'+(st.caido?' caida':'')+'"'+(st.caido?' title="'+esc(st.txt)+'"':'')+'>';
-    h+='<div class="pos'+(top&&!st.caido?' top':'')+'">'+(i+1)+'</div>';
-    h+='<div class="mini">'+(f?'<img src="'+esc(urlFoto(f))+'" alt="" referrerpolicy="no-referrer" onerror="this.remove()">':'')+'</div>';
+    h+='<div class="rank">'
+      +'<button data-sube="'+esc(p.id)+'" aria-label="Subir"'+(i===0?' disabled':'')+'>&#9650;</button>'
+      +'<span class="pos'+(top&&!st.caido?' top':'')+'">'+(i+1)+'</span>'
+      +'<button data-baja="'+esc(p.id)+'" aria-label="Bajar"'+(i===n-1?' disabled':'')+'>&#9660;</button></div>';
+    h+=miniHTML(p);
     var t=st.caido?' class="tachado"':'';
     h+='<div class="cuerpo"><div class="alto"><h3'+t+'>'+esc(p.direccion)+'</h3><span class="p'
       +(st.caido?' tachado':'')+'">'+eur(p.precio)+'</span></div>';
     h+='<p class="z">'+esc(p.zona||'')+(p.m2?', '+p.m2+' m²':'')+(p.habitaciones?', '+p.habitaciones+' hab':'')
       +(p.distancia_km!=null?', a '+km(p.distancia_km)+' km de CIRCE':'')+'</p>';
-    var gr=grupoFav(p.id);
-    if(gr===0) h+='<div class="marcas"><span class="sello-p ambos">Os gusta a los dos</span></div>';
-    else if(gr===2) h+='<div class="marcas"><span class="sello-p otro">Le gusta a '+esc(nombre(otro()))
-      +', tú lo descartaste</span></div>';
+    h+=nombresHTML(p.id);
     if(st.caido) h+='<p class="cambio" style="color:var(--brick)">'+esc(st.txt)+'</p>';
     else if(st.txt!=='Sigue publicado') h+='<p class="cambio" style="color:'+st.col+'">'+esc(st.txt)+'</p>';
     h+='<div class="acc">';
+    h+='<button data-ver="'+esc(p.id)+'">Ver otra vez</button>';
     if(p.url) h+='<a href="'+esc(p.url)+'" target="_blank" rel="noreferrer">Abrir anuncio</a>';
     h+='<a href="'+esc(ruta(p))+'" target="_blank" rel="noreferrer">Ruta a CIRCE</a>';
-    h+= gr===2
-      ? '<button data-accion="si" data-id="'+esc(p.id)+'">Cambiar de idea</button></div></div>'
-      : '<button class="rojo" data-accion="no" data-id="'+esc(p.id)+'">Descartar</button></div></div>';
-    h+='<div class="ordenar">'
-      +'<button data-sube="'+esc(p.id)+'" aria-label="Subir"'+(i===0?' disabled':'')+'>&#9650;</button>'
-      +'<button data-baja="'+esc(p.id)+'" aria-label="Bajar"'+(i===n-1?' disabled':'')+'>&#9660;</button></div>';
-    return h+'</div>';
+    h+= vigente(p.id,YO)==='si'
+      ? '<button class="rojo" data-accion="no" data-id="'+esc(p.id)+'">Descartar</button>'
+      : '<button data-accion="si" data-id="'+esc(p.id)+'">Cambiar de idea</button>';
+    return h+'</div></div></div>';
   }
   function descHTML(p){
-    var f=(p.fotos||[]).filter(Boolean)[0];
-    var h='<div class="fila corta"><div class="mini">'
-      +(f?'<img src="'+esc(urlFoto(f))+'" alt="" referrerpolicy="no-referrer" onerror="this.remove()">':'')+'</div>';
+    var h='<div class="fila corta">'+miniHTML(p);
     h+='<div class="cuerpo"><div class="alto"><h3 class="tachado">'+esc(p.direccion)+'</h3>'
       +'<span class="p tachado">'+eur(p.precio)+'</span></div>';
-    h+='<p class="z">'+esc(p.zona||'')+(p.m2?', '+p.m2+' m²':'')+'</p>';
-    h+='<div class="acc"><button data-accion="reset" data-id="'+esc(p.id)+'">Recuperar</button></div>';
+    h+='<p class="z">'+esc(p.zona||'')+(p.m2?', '+p.m2+' m²':'')
+      +(p.habitaciones?', '+p.habitaciones+' hab':'')+'</p>';
+    h+=nombresHTML(p.id);
+    h+='<div class="acc"><button data-ver="'+esc(p.id)+'">Ver otra vez</button>'
+      +'<button data-accion="reset" data-id="'+esc(p.id)+'">Recuperar</button></div>';
     return h+'</div></div>';
   }
   function pintar(){
@@ -734,6 +837,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
       };
       b.querySelector('span').textContent = PLEGADO?'Más datos':'Menos datos';
     });
+    v.querySelectorAll('[data-ver]').forEach(function(b){b.onclick=function(ev){ev.stopPropagation();abrirFicha(b.dataset.ver);};});
     v.querySelectorAll('[data-sube]').forEach(function(b){b.onclick=function(){moverFav(-1,b.dataset.sube);};});
     v.querySelectorAll('[data-baja]').forEach(function(b){b.onclick=function(){moverFav(1,b.dataset.baja);};});
     v.querySelectorAll('[data-paso]').forEach(function(b){b.onclick=function(ev){ev.stopPropagation();pasarFoto(porId[b.dataset.id],Number(b.dataset.paso));};});
@@ -743,6 +847,9 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     var t=e.target.closest('[data-tab]'); if(t){tab=t.dataset.tab;pintar();}
     var q=e.target.closest('[data-yo]'); if(q) elegir(q.dataset.yo);
   });
+  document.getElementById('ficha-cerrar').onclick=cerrarFicha;
+  document.getElementById('ficha-ov').onclick=function(e){ if(e.target===this) cerrarFicha(); };
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&FICHA) cerrarFicha(); });
   document.getElementById('match-seguir').onclick=function(){
     document.getElementById('match').hidden=true;
   };
@@ -758,7 +865,7 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
   }
   else document.getElementById('quien').hidden=false;
   document.addEventListener('keydown',function(e){
-    if(tab!=='decidir'||!arriba) return;
+    if(tab!=='decidir'||!arriba||FICHA) return;
     if(e.key==='ArrowRight') volar(arriba.el,arriba.p,'si');
     else if(e.key==='ArrowLeft') volar(arriba.el,arriba.p,'no');
     else if(e.key==='Backspace'){e.preventDefault();deshacer();}
