@@ -50,13 +50,14 @@ Repositorio `tresvsdos/radar-pisos`, rama `main`:
 | --- | --- | --- |
 | `datos.json` | los pisos que ve la web | **sí, lo reescribes entero** |
 | `registro.json` | tu memoria de un día para otro | **sí, lo reescribes entero** |
+| `barrios.json` | a qué distancia de CIRCE está cada barrio | **solo añades barrios nuevos** |
 | `index.html` | la web | **no, jamás** |
 | `config-firebase.js` | conexión de la web con su base de datos | **no, jamás** |
 
 Tienes el repositorio clonado en tu espacio de trabajo. Se escribe con git
 normal, no con el conector de GitHub: empieza el día con
 `git fetch origin && git reset --hard origin/main` para partir de lo publicado,
-edita los dos archivos, y termina con `git add`, `git commit` y
+edita los archivos, y termina con `git add`, `git commit` y
 `git push -u origin main`.
 
 **Nunca generes HTML, ni base64, ni adjuntos.** Ese fue el error del sistema
@@ -93,6 +94,13 @@ Guarda por cada `id`: `precio`, `visto` (fecha en que lo viste por última vez),
 `motivo`. Eso es lo que te permite saber mañana qué es nuevo, qué ha bajado de
 precio y qué ha desaparecido.
 
+Lee también `barrios.json`: es la tabla de distancias por barrio, y sirve para
+descartar sin abrir la ficha de cada anuncio. Salió de medir los pisos que ya
+habíamos visto, así que es aproximada por definición — cada entrada es el centro
+de los anuncios vistos en ese barrio, no un límite del callejero. **Amplíala**
+cada vez que te topes con un barrio que no esté, en lugar de volver a calcularlo
+mañana desde cero.
+
 **No necesitas saber qué han decidido ellos.** La web se encarga de no volver a
 enseñarles lo que ya marcaron. Tú manda todos los pisos válidos.
 
@@ -108,12 +116,81 @@ Una consulta por zona:
 Empieza por las zonas núcleo y sigue por las candidatas. Si una zona no devuelve
 nada, no insistas.
 
-De los otros portales olvídate salvo que te sobre tiempo: Fotocasa e idealista
-web responden 403 a lectura automatizada y Habitaclia redirige. Solo pisos.com
-es legible. No merece la pena el esfuerzo.
+### Segunda fuente: pisos.com
 
-Duplicados: mismo piso si coinciden calle y número, o coordenadas a menos de
-30 m, con precio ±25 € y superficie ±3 m². Quédate con uno solo.
+Desde el 15/09 el radar mira también **pisos.com**, por `curl`, no por conector.
+Comprobado ese día con estos resultados, para que no tengas que descubrirlo tú:
+
+| Portal | Qué hace | Veredicto |
+| --- | --- | --- |
+| **pisos.com** | 200, 30 anuncios por página | **se usa** |
+| habitaclia | 302 y, siguiendo el salto, 200 con 30 anuncios | legible, aún no se usa |
+| fotocasa | **403** de entrada | no se puede |
+| idealista por web | **403** | no hace falta: para eso está el conector |
+| Milanuncios | 200 pero mezcla todo tipo de anuncios | no compensa |
+
+Pide el listado con un navegador creíble; sin `User-Agent` te cortan:
+
+```bash
+UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/128.0 Safari/537.36"
+curl -s -m 25 -A "$UA" "https://www.pisos.com/alquiler/pisos-zaragoza/" -o listado.html
+```
+
+De ahí salen los anuncios con `data-lnk-href="..."`, en esta forma:
+
+```
+/alquilar/apartamento-zaragoza_capital_centro-66681812006_102200/
+             └ tipo    └ barrio + código postal   └ identificador
+```
+
+El identificador es lo que va detrás del último `-`. El `id` del piso es
+`pisos-66681812006_102200`, igual que los de idealista son `idealista-<código>`.
+**Nunca lo cambies después**: las decisiones cuelgan de él.
+
+**Filtra por barrio ANTES de abrir ninguna ficha.** El barrio va en la propia URL
+del listado, y `barrios.json` dice a cuántos kilómetros de CIRCE está cada uno.
+Así te ahorras descargar treinta fichas para tirar veinticinco:
+
+- Barrio en `barrios.json` y por debajo del radio → sigue, abre la ficha.
+- Barrio en `barrios.json` y por encima → descarta sin abrir nada.
+- Barrio que **no** esté en `barrios.json` → abre la ficha, saca las coordenadas,
+  calcula la distancia real, y **añade el barrio a `barrios.json`** con
+  `anuncios: 1`. Así la tabla crece sola y mañana ya no hará falta abrirla.
+- Barrio que ronde el límite (3,7 km o más) → no te fíes de la tabla, usa
+  siempre las coordenadas del anuncio.
+
+La ficha trae lo que necesitas:
+
+- **Coordenadas**: `latitude=41.6506708&longitude=-0.8820692` dentro del HTML.
+  Son las que mandan para la distancia.
+- **Fotos**: URLs completas en `https://fotos.imghs.net/…`. Guárdalas **enteras**
+  en `fotos`, con su `|Estancia` detrás si la sabes. La web ya sabe distinguir:
+  si la cadena empieza por `http` la usa tal cual, y si no le pega delante
+  `foto_base`, que es lo de idealista. Usa las de la carpeta `fchm-wp` (las
+  grandes), no las de `appswm-wp`.
+- **Superficie** (`65 m²`), **habitaciones** (`1 hab`) y **precio**
+  (`1.200 €/mes`) en el texto.
+
+Lo que pisos.com **no** te da, y por tanto rellenas con `null` sin inventarlo:
+`planta`, `exterior`, `ascensor` cuando no aparezcan. `muebles` solo lo pones a
+`"confirmado"` si el anuncio lo dice con todas las letras.
+
+Añade `"pisos.com"` a `fuentes` en la cabecera de `datos.json` el día que
+publiques alguno.
+
+**Si pisos.com deja de funcionar, no pares el día.** Cambian el HTML cada
+cierto tiempo y un día los `data-lnk-href` no estarán. Publica con lo de
+idealista, que es la fuente principal, y dilo en tu resumen final: «pisos.com no
+respondió / cambió el formato». Un día sin la segunda fuente es un día normal;
+un `datos.json` roto, no.
+
+### Duplicados
+
+El mismo piso sale en varios portales, y hay que dejar uno.
+
+Mismo piso si coinciden calle y número, o coordenadas a menos de 30 m, con
+precio ±25 € y superficie ±3 m². **Cuando se repita, quédate con el de
+idealista** — trae más campos y fotos mejor organizadas — y no cambies su `id`.
 
 ## Paso 3. Ficha completa
 

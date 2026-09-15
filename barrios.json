@@ -1,0 +1,150 @@
+{
+ "_que_es": "Distancia aproximada de cada barrio a CIRCE, para filtrar sin abrir la ficha de cada anuncio. Cada entrada es el centro de los pisos que hemos visto en ese barrio, no un limite administrativo.",
+ "_como_se_usa": "Si el barrio esta aqui y su km supera el radio, descarta sin abrir la ficha. Si NO esta aqui, abre la ficha, saca latitude/longitude, calcula la distancia real y anade el barrio a este fichero con anuncios=1.",
+ "_ojo": "Un barrio grande puede tener esquinas mas cerca o mas lejos que su centro. Para los que rondan el limite (3,7 km o mas) usa siempre las coordenadas del anuncio, no esta tabla.",
+ "circe": {
+  "lat": 41.67079,
+  "lng": -0.90188
+ },
+ "actualizado": "2026-09-15",
+ "barrios": {
+  "Barrio del Ave": {
+   "lat": 41.652835,
+   "lng": -0.901426,
+   "km": 2.0,
+   "anuncios": 1
+  },
+  "Casco Histórico": {
+   "lat": 41.6582,
+   "lng": -0.889157,
+   "km": 1.8,
+   "anuncios": 2
+  },
+  "Casco Histórico (Alfonso)": {
+   "lat": 41.655313,
+   "lng": -0.880307,
+   "km": 2.5,
+   "anuncios": 2
+  },
+  "Casco Histórico (La Magdalena)": {
+   "lat": 41.649993,
+   "lng": -0.87068,
+   "km": 3.5,
+   "anuncios": 3
+  },
+  "Casco Histórico (San Pablo)": {
+   "lat": 41.655997,
+   "lng": -0.885783,
+   "km": 2.1,
+   "anuncios": 2
+  },
+  "Centro": {
+   "lat": 41.650056,
+   "lng": -0.877279,
+   "km": 3.1,
+   "anuncios": 2
+  },
+  "Centro (Doctor Cerrada)": {
+   "lat": 41.648689,
+   "lng": -0.890297,
+   "km": 2.6,
+   "anuncios": 1
+  },
+  "Centro (Las Damas)": {
+   "lat": 41.646267,
+   "lng": -0.881,
+   "km": 3.2,
+   "anuncios": 1
+  },
+  "Centro (Paseo Independencia)": {
+   "lat": 41.651111,
+   "lng": -0.884951,
+   "km": 2.6,
+   "anuncios": 1
+  },
+  "Centro (Paseo Sagasta)": {
+   "lat": 41.641821,
+   "lng": -0.887541,
+   "km": 3.4,
+   "anuncios": 2
+  },
+  "Ciudad Jardín - Parque Roma": {
+   "lat": 41.647239,
+   "lng": -0.899185,
+   "km": 2.6,
+   "anuncios": 4
+  },
+  "Delicias": {
+   "lat": 41.650479,
+   "lng": -0.905878,
+   "km": 2.3,
+   "anuncios": 2
+  },
+  "Delicias (Mercado San Valero)": {
+   "lat": 41.652013,
+   "lng": -0.899021,
+   "km": 2.1,
+   "anuncios": 2
+  },
+  "El Rabal (Arrabal)": {
+   "lat": 41.660468,
+   "lng": -0.875378,
+   "km": 2.5,
+   "anuncios": 1
+  },
+  "El Rabal (Picarral)": {
+   "lat": 41.669345,
+   "lng": -0.873957,
+   "km": 2.3,
+   "anuncios": 1
+  },
+  "La Almozara": {
+   "lat": 41.661615,
+   "lng": -0.898093,
+   "km": 1.1,
+   "anuncios": 1
+  },
+  "Las Fuentes": {
+   "lat": 41.648441,
+   "lng": -0.864892,
+   "km": 4.0,
+   "anuncios": 2
+  },
+  "Parque Delicias - La Bozada": {
+   "lat": 41.650583,
+   "lng": -0.913856,
+   "km": 2.5,
+   "anuncios": 5
+  },
+  "Parque Miraflores": {
+   "lat": 41.645794,
+   "lng": -0.873756,
+   "km": 3.6,
+   "anuncios": 3
+  },
+  "Salvador Allende - Parque Goya": {
+   "lat": 41.669432,
+   "lng": -0.875611,
+   "km": 2.2,
+   "anuncios": 2
+  },
+  "San José": {
+   "lat": 41.637803,
+   "lng": -0.883807,
+   "km": 4.0,
+   "anuncios": 1
+  },
+  "Universidad (Romareda)": {
+   "lat": 41.642974,
+   "lng": -0.910076,
+   "km": 3.2,
+   "anuncios": 2
+  },
+  "Universidad (San Francisco)": {
+   "lat": 41.642335,
+   "lng": -0.897258,
+   "km": 3.2,
+   "anuncios": 4
+  }
+ }
+}

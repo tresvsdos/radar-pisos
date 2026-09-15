@@ -570,8 +570,12 @@ main{max-width:1020px;margin:0 auto;padding:18px 20px 26px}
     if(c&&c.piso) return c.piso;
     var dir='';
     E.forEach(function(x){if(x.id===id&&x.dir) dir=x.dir;});
-    return {id:id, direccion:dir||'Piso guardado', zona:'', fotos:[],
-            url:'https://www.idealista.com/inmueble/'+String(id).split('-')[1]+'/'};
+    // El id es "portal-codigo". Solo sabemos rehacer la URL de idealista a
+    // partir del codigo; los demas portales meten un texto en la direccion, asi
+    // que antes que un enlace roto preferimos no poner ninguno.
+    var pre=String(id).split('-')[0], cod=String(id).slice(pre.length+1), u='';
+    if(pre==='idealista'&&cod) u='https://www.idealista.com/inmueble/'+cod+'/';
+    return {id:id, direccion:dir||'Piso guardado', zona:'', fotos:[], url:u};
   }
   function gustaA(id){
     var o=opinan(id), q=[];
