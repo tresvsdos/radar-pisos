@@ -100,7 +100,14 @@ De ahí sacas lo que no viene en la búsqueda y es lo que de verdad decide:
 - `description` completa. Los muebles, la comunidad, la calefacción y las
   condiciones raras viven ahí, no en los campos.
 - `characteristicsDescriptions`, que trae frases como «Amueblado y cocina
-  equipada», «Calefacción central: Gasoil» o «Fianza de 2 meses».
+  equipada», «Calefacción central: Gasoil» o «Fianza de 2 meses». **Esta es la
+  señal fiable sobre los muebles**, por encima de la descripción: un anuncio
+  puede venderse como amueblado en el texto y traer aquí «Cocina equipada y casa
+  sin amueblar». Cuando las dos se contradigan, manda esta.
+- Contradicciones entre la ficha y la descripción en general: si el portal dice
+  2 habitaciones y el texto dice «una habitación», o si el precio del texto no
+  es el del campo, no lo publiques. Un anuncio incoherente no se arregla
+  eligiendo el dato que más gusta.
 - `labels`: si aparece `seasonalRental`, es alquiler de temporada y va fuera.
 - `contactInfo.professional`: si es agencia o particular.
 - `images`: **todas**. No te quedes con tres. Un anuncio trae entre 5 y 30 fotos
@@ -122,7 +129,8 @@ Descarta, apuntando el motivo en el registro, si:
 - está en zona candidata y no cumple la regla de conexión;
 - el anuncio huele a estafa: precio muy por debajo de la zona junto con
   propietario en el extranjero, señal antes de ver el piso, o contacto solo por
-  correo externo. Estos no se publican.
+  correo externo. Estos no se publican;
+- la ficha y la descripción se contradicen en habitaciones, precio o muebles.
 
 Mira de verdad los tres primeros filtros en la **descripción**, no solo en los
 campos: el sistema anterior coló un piso de temporada y otro sin amueblar
