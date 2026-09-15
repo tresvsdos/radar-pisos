@@ -1,0 +1,4 @@
+idealista: sí
+anuncios: 10
+fecha: 2026-09-15 07:14:15 UTC
+push: ok
