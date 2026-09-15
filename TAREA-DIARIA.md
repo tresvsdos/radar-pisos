@@ -1,10 +1,33 @@
 # Radar de pisos Zaragoza — instrucciones de la tarea diaria
 
 Pega todo lo que hay bajo la línea como instrucciones de la tarea programada.
-Frecuencia: todos los días a las 8:00 (Europe/Madrid).
+Frecuencia: todos los días a las 8:00 (Europe/Madrid). El cron se escribe en UTC,
+así que en horario de verano es `0 6 * * *` y en invierno hay que pasarlo a
+`0 7 * * *` (último domingo de octubre) o la tarea se ejecutará a las 7:00.
 
-Conectores necesarios: **idealista** y **GitHub**. Sin el de GitHub la tarea no
-puede hacer su trabajo.
+## Dónde tiene que vivir esta tarea, y por qué
+
+Necesita **dos cosas a la vez**: el conector de **idealista** y **permiso de
+escritura sobre el repositorio**. Conseguir las dos juntas no es automático, y
+esto costó dos días de ejecuciones perdidas:
+
+- Una tarea programada normal (de las de Cowork) sí tiene los conectores, pero
+  su sesión **no puede escribir en el repositorio**. Clona y lee sin problema,
+  y al hacer `git push` el proxy lo corta con
+  `tresvsdos/radar-pisos is not in this session's authorized repository set`;
+  la API de GitHub responde 403. La herramienta `add_repo`, que sería la que
+  arregla eso, **no existe en esas sesiones**. No hay forma de salir de ahí
+  desde dentro: cada ejecución llegaba al final con los datos hechos y sin poder
+  publicarlos.
+- Lo que sí funciona: una **sesión de Claude Code** con `tresvsdos/radar-pisos`
+  entre sus fuentes, y una tarea programada **atada a esa sesión**
+  (`persistent_session_id`), no una que cree una sesión nueva cada día. Así la
+  sesión aporta el repositorio *y* los conectores. Comprobado el 15/09/2026:
+  idealista responde y el `git push` entra.
+
+Si algún día la tarea vuelve a quedarse sin publicar, mira esto antes que nada:
+el síntoma es siempre el mismo (trabajo hecho, `push` denegado) y la causa es
+que la tarea se ha vuelto a crear como sesión nueva en vez de atada a la suya.
 
 ---
 
@@ -30,9 +53,11 @@ Repositorio `tresvsdos/radar-pisos`, rama `main`:
 | `index.html` | la web | **no, jamás** |
 | `config-firebase.js` | conexión de la web con su base de datos | **no, jamás** |
 
-Para escribir usa `create_or_update_file`. El contenido va **en texto plano**:
-el conector lo codifica solo. Para actualizar un archivo que ya existe hace
-falta su `sha`, que te da `get_file_contents` sobre ese mismo archivo y rama.
+Tienes el repositorio clonado en tu espacio de trabajo. Se escribe con git
+normal, no con el conector de GitHub: empieza el día con
+`git fetch origin && git reset --hard origin/main` para partir de lo publicado,
+edita los dos archivos, y termina con `git add`, `git commit` y
+`git push -u origin main`.
 
 **Nunca generes HTML, ni base64, ni adjuntos.** Ese fue el error del sistema
 anterior: el contenido se truncaba y llegaba roto. Aquí solo escribes JSON.
