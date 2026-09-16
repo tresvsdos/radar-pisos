@@ -6,12 +6,24 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-15",
+ "actualizado": "2026-09-16",
  "barrios": {
+  "Barrio Jesús": {
+   "lat": 41.655402,
+   "lng": -0.867086,
+   "km": 3.4,
+   "anuncios": 1
+  },
   "Barrio del Ave": {
    "lat": 41.652835,
    "lng": -0.901426,
    "km": 2.0,
+   "anuncios": 1
+  },
+  "Casablanca": {
+   "lat": 41.631909,
+   "lng": -0.90933,
+   "km": 4.4,
    "anuncios": 1
   },
   "Casco Histórico": {
@@ -37,6 +49,12 @@
    "lng": -0.885783,
    "km": 2.1,
    "anuncios": 2
+  },
+  "Casetas - Garrapinillos - Monzalbarba": {
+   "lat": 41.724068,
+   "lng": -1.033351,
+   "km": 12.4,
+   "anuncios": 1
   },
   "Centro": {
    "lat": 41.650056,
@@ -104,6 +122,12 @@
    "km": 1.1,
    "anuncios": 1
   },
+  "La Granja": {
+   "lat": 41.640377,
+   "lng": -0.872538,
+   "km": 4.2,
+   "anuncios": 1
+  },
   "Las Fuentes": {
    "lat": 41.648441,
    "lng": -0.864892,
@@ -134,6 +158,12 @@
    "km": 4.0,
    "anuncios": 1
   },
+  "San José Alto": {
+   "lat": 41.635374,
+   "lng": -0.877121,
+   "km": 4.4,
+   "anuncios": 1
+  },
   "Universidad (Romareda)": {
    "lat": 41.642974,
    "lng": -0.910076,
@@ -145,6 +175,12 @@
    "lng": -0.897258,
    "km": 3.2,
    "anuncios": 4
+  },
+  "Valdefierro": {
+   "lat": 41.637642,
+   "lng": -0.933647,
+   "km": 4.5,
+   "anuncios": 1
   }
  }
 }
