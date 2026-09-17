@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-16",
+ "actualizado": "2026-09-17",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -18,6 +18,12 @@
    "lat": 41.652835,
    "lng": -0.901426,
    "km": 2.0,
+   "anuncios": 1
+  },
+  "Bombarda - Monsalud": {
+   "lat": 41.653606,
+   "lng": -0.918117,
+   "km": 2.3,
    "anuncios": 1
   },
   "Casablanca": {
@@ -162,6 +168,12 @@
    "lat": 41.635374,
    "lng": -0.877121,
    "km": 4.4,
+   "anuncios": 1
+  },
+  "Santa Isabel": {
+   "lat": 41.668469,
+   "lng": -0.829416,
+   "km": 6.0,
    "anuncios": 1
   },
   "Universidad (Romareda)": {
