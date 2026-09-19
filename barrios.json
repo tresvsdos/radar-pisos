@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-18",
+ "actualizado": "2026-09-19",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -18,7 +18,7 @@
    "lat": 41.652835,
    "lng": -0.901426,
    "km": 2.0,
-   "anuncios": 1
+   "anuncios": 2
   },
   "Bombarda - Monsalud": {
    "lat": 41.653606,
@@ -48,7 +48,7 @@
    "lat": 41.649993,
    "lng": -0.87068,
    "km": 3.5,
-   "anuncios": 3
+   "anuncios": 4
   },
   "Casco Histórico (San Pablo)": {
    "lat": 41.655997,
@@ -78,7 +78,7 @@
    "lat": 41.646267,
    "lng": -0.881,
    "km": 3.2,
-   "anuncios": 1
+   "anuncios": 2
   },
   "Centro (Paseo Independencia)": {
    "lat": 41.651111,
@@ -96,7 +96,7 @@
    "lat": 41.647239,
    "lng": -0.899185,
    "km": 2.6,
-   "anuncios": 4
+   "anuncios": 5
   },
   "Delicias": {
    "lat": 41.650479,
@@ -126,7 +126,7 @@
    "lat": 41.661615,
    "lng": -0.898093,
    "km": 1.1,
-   "anuncios": 1
+   "anuncios": 2
   },
   "La Granja": {
    "lat": 41.640377,
