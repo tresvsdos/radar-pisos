@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-19",
+ "actualizado": "2026-09-20",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -66,7 +66,7 @@
    "lat": 41.650056,
    "lng": -0.877279,
    "km": 3.1,
-   "anuncios": 2
+   "anuncios": 3
   },
   "Centro (Doctor Cerrada)": {
    "lat": 41.648689,
@@ -114,7 +114,7 @@
    "lat": 41.660468,
    "lng": -0.875378,
    "km": 2.5,
-   "anuncios": 1
+   "anuncios": 2
   },
   "El Rabal (Picarral)": {
    "lat": 41.669345,
