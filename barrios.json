@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-21",
+ "actualizado": "2026-09-22",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -126,7 +126,7 @@
    "lat": 41.661615,
    "lng": -0.898093,
    "km": 1.1,
-   "anuncios": 2
+   "anuncios": 4
   },
   "La Granja": {
    "lat": 41.640377,
@@ -144,7 +144,7 @@
    "lat": 41.650583,
    "lng": -0.913856,
    "km": 2.5,
-   "anuncios": 5
+   "anuncios": 6
   },
   "Parque Miraflores": {
    "lat": 41.645794,
@@ -186,12 +186,36 @@
    "lat": 41.642335,
    "lng": -0.897258,
    "km": 3.2,
-   "anuncios": 4
+   "anuncios": 5
   },
   "Valdefierro": {
    "lat": 41.637642,
    "lng": -0.933647,
    "km": 4.5,
+   "anuncios": 1
+  },
+  "El Rabal (Zalfonada)": {
+   "lat": 41.673251,
+   "lng": -0.872173,
+   "km": 2.5,
+   "anuncios": 1
+  },
+  "Pinares de Venecia": {
+   "lat": 41.627708,
+   "lng": -0.86348,
+   "km": 4.9,
+   "anuncios": 1
+  },
+  "Avenida de Cataluña": {
+   "lat": 41.669872,
+   "lng": -0.845985,
+   "km": 4.7,
+   "anuncios": 1
+  },
+  "Montecanal - Valdespartera - Rosales del Canal": {
+   "lat": 41.619717,
+   "lng": -0.936357,
+   "km": 6.1,
    "anuncios": 1
   }
  }
