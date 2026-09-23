@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-22",
+ "actualizado": "2026-09-23",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -102,7 +102,7 @@
    "lat": 41.650479,
    "lng": -0.905878,
    "km": 2.3,
-   "anuncios": 2
+   "anuncios": 3
   },
   "Delicias (Mercado San Valero)": {
    "lat": 41.652013,
@@ -114,7 +114,7 @@
    "lat": 41.660468,
    "lng": -0.875378,
    "km": 2.5,
-   "anuncios": 2
+   "anuncios": 3
   },
   "El Rabal (Picarral)": {
    "lat": 41.669345,
@@ -216,6 +216,18 @@
    "lat": 41.619717,
    "lng": -0.936357,
    "km": 6.1,
+   "anuncios": 1
+  },
+  "Ruiseñores": {
+   "lat": 41.638015,
+   "lng": -0.889594,
+   "km": 3.8,
+   "anuncios": 1
+  },
+  "San José (Camino de las Torres)": {
+   "lat": 41.640968,
+   "lng": -0.885496,
+   "km": 3.6,
    "anuncios": 1
   }
  }
