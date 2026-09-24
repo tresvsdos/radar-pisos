@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-23",
+ "actualizado": "2026-09-24",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -48,13 +48,13 @@
    "lat": 41.649993,
    "lng": -0.87068,
    "km": 3.5,
-   "anuncios": 4
+   "anuncios": 5
   },
   "Casco Histórico (San Pablo)": {
    "lat": 41.655997,
    "lng": -0.885783,
    "km": 2.1,
-   "anuncios": 2
+   "anuncios": 3
   },
   "Casetas - Garrapinillos - Monzalbarba": {
    "lat": 41.724068,
@@ -72,7 +72,7 @@
    "lat": 41.648689,
    "lng": -0.890297,
    "km": 2.6,
-   "anuncios": 1
+   "anuncios": 2
   },
   "Centro (Las Damas)": {
    "lat": 41.646267,
@@ -138,7 +138,7 @@
    "lat": 41.648441,
    "lng": -0.864892,
    "km": 4.0,
-   "anuncios": 2
+   "anuncios": 3
   },
   "Parque Delicias - La Bozada": {
    "lat": 41.650583,
