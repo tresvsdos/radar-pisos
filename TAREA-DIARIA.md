@@ -69,7 +69,10 @@ anterior: el contenido se truncaba y llegaba roto. Aquí solo escribes JSON.
 TRABAJO (CIRCE):   Avenida Ranillas, Edificio Dinamiza 3D, 50018 Zaragoza
                    lat 41.67079 · lng -0.90188   (ya geolocalizado, no lo repitas)
 PRECIO_MAX:        900 € al mes de coste real (precio + comunidad si va aparte)
-HABITACIONES:      2 o 3
+HABITACIONES:      1, 2 o 3 dormitorios. El de una entra solo si es un
+                   dormitorio de verdad, cerrado y con puerta. Los estudios,
+                   lofts y diáfanos quedan fuera: la cama no puede estar en
+                   el salón
 AMUEBLADO:         obligatorio
 PLANTA:            fuera bajos, semisótanos y sótanos. Entreplanta entra, con aviso
 TIPO DE ALQUILER:  solo vivienda habitual. Fuera temporada, por meses, por curso
@@ -111,7 +114,7 @@ Fuente: conector de idealista, `search_properties` con `operation: RENT`,
 
 Una consulta por zona:
 
-> `piso de alquiler de 2 o 3 habitaciones hasta 900 euros en {zona}, Zaragoza`
+> `piso de alquiler de 1, 2 o 3 habitaciones hasta 900 euros en {zona}, Zaragoza`
 
 Empieza por las zonas núcleo y sigue por las candidatas. Si una zona no devuelve
 nada, no insistas.
@@ -207,9 +210,17 @@ De ahí sacas lo que no viene en la búsqueda y es lo que de verdad decide:
   puede venderse como amueblado en el texto y traer aquí «Cocina equipada y casa
   sin amueblar». Cuando las dos se contradigan, manda esta.
 - Contradicciones entre la ficha y la descripción en general: si el portal dice
-  2 habitaciones y el texto dice «una habitación», o si el precio del texto no
+  3 habitaciones y el texto dice «dos dormitorios», o si el precio del texto no
   es el del campo, no lo publiques. Un anuncio incoherente no se arregla
-  eligiendo el dato que más gusta.
+  eligiendo el dato que más gusta. La excepción es el conteo entre una y dos:
+  ahí la de una también vale, así que si la ficha dice 2 y el texto dice «una
+  habitación», publícalo como de una y dilo en el `ojo`.
+- **Con una habitación, comprueba que hay habitación.** El portal cuenta como
+  «1 habitación» tanto un piso pequeño con su dormitorio cerrado como un estudio
+  diáfano. Lo que decide es la descripción y las fotos: «salón, dormitorio,
+  cocina y baño» entra; «estudio», «loft», «espacio diáfano», «ambiente único»,
+  «cama abatible en el salón» o un plano sin tabique entre cama y sofá, no. Si
+  el anuncio no permite saberlo, no lo publiques y apunta el motivo.
 - `labels`: si aparece `seasonalRental`, es alquiler de temporada y va fuera.
 - `contactInfo.professional`: si es agencia o particular.
 - `images`: **todas**. No te quedes con tres. Un anuncio trae entre 5 y 30 fotos
@@ -222,7 +233,7 @@ Descarta, apuntando el motivo en el registro, si:
 
 - el **coste real** (precio + comunidad, si se paga aparte) pasa de PRECIO_MAX.
   Si no se sabe si la comunidad va incluida, usa el precio y marca el aviso;
-- tiene menos de 2 habitaciones o más de 3;
+- no tiene dormitorio cerrado (estudio, loft o diáfano), o tiene más de 3;
 - es bajo, semisótano o sótano, por el campo de planta o porque la descripción
   dice «a pie de calle», «planta calle» o «local convertido»;
 - no está amueblado: ni la ficha, ni la descripción, ni las fotos lo muestran, o
