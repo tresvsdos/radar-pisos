@@ -42,7 +42,7 @@
    "lat": 41.655313,
    "lng": -0.880307,
    "km": 2.5,
-   "anuncios": 2
+   "anuncios": 6
   },
   "Casco Histórico (La Magdalena)": {
    "lat": 41.649993,
@@ -54,7 +54,7 @@
    "lat": 41.655997,
    "lng": -0.885783,
    "km": 2.1,
-   "anuncios": 3
+   "anuncios": 4
   },
   "Casetas - Garrapinillos - Monzalbarba": {
    "lat": 41.724068,
@@ -84,13 +84,13 @@
    "lat": 41.651111,
    "lng": -0.884951,
    "km": 2.6,
-   "anuncios": 1
+   "anuncios": 3
   },
   "Centro (Paseo Sagasta)": {
    "lat": 41.641821,
    "lng": -0.887541,
    "km": 3.4,
-   "anuncios": 3
+   "anuncios": 5
   },
   "Ciudad Jardín - Parque Roma": {
    "lat": 41.647239,
@@ -186,7 +186,7 @@
    "lat": 41.642335,
    "lng": -0.897258,
    "km": 3.2,
-   "anuncios": 5
+   "anuncios": 7
   },
   "Valdefierro": {
    "lat": 41.637642,

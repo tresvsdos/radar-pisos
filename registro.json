@@ -47,7 +47,7 @@
    "visto": "2026-09-25",
    "ausencias": 0,
    "estado": "descartado",
-   "motivo": "Según la descripción solo tiene una habitación (el portal dice 2)"
+   "motivo": "La ficha dice 725 € y la descripción 675 €"
   },
   "idealista-111679551": {
    "precio": 900,
@@ -1412,6 +1412,212 @@
   },
   "idealista-84293067": {
    "precio": 890,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-109513510": {
+   "precio": 800,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es un bajo"
+  },
+  "idealista-112587889": {
+   "precio": 850,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es un bajo"
+  },
+  "idealista-109164996": {
+   "precio": 650,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Lleva la etiqueta de alquiler de temporada"
+  },
+  "idealista-95836136": {
+   "precio": 710,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Lleva la etiqueta de alquiler de temporada"
+  },
+  "idealista-110924849": {
+   "precio": 675,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es alquiler de temporada, mínimo cinco meses"
+  },
+  "idealista-112563293": {
+   "precio": 750,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es alquiler de temporada"
+  },
+  "idealista-111972997": {
+   "precio": 900,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es alquiler temporal de tres a doce meses"
+  },
+  "idealista-1796235": {
+   "precio": 800,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es un bloque de apartamentos de temporada, no una vivienda concreta"
+  },
+  "idealista-112537510": {
+   "precio": 650,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es un estudio de 27 m², sin dormitorio cerrado"
+  },
+  "idealista-111813092": {
+   "precio": 825,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es un loft de espacio abierto: la cama está en la zona de estar"
+  },
+  "idealista-104247225": {
+   "precio": 900,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "La única puerta es la de la cocina: el anuncio habla de «gran salón y zona de dormitorio»"
+  },
+  "idealista-35808629": {
+   "precio": 625,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Ni la descripción ni las fotos muestran un dormitorio cerrado"
+  },
+  "idealista-112496439": {
+   "precio": 750,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Sin fotos y con «sofá cama» en el texto: no consta que el dormitorio sea cerrado"
+  },
+  "idealista-112632687": {
+   "precio": 900,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Se alquila sin muebles"
+  },
+  "idealista-112484227": {
+   "precio": 800,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Se alquila sin muebles"
+  },
+  "idealista-112445906": {
+   "precio": 900,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Se alquila sin muebles"
+  },
+  "idealista-112612148": {
+   "precio": 725,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Se alquila sin amueblar"
+  },
+  "idealista-105198700": {
+   "precio": 800,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Se alquila sin amueblar"
+  },
+  "idealista-112257535": {
+   "precio": 750,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Se entrega sin amueblar"
+  },
+  "idealista-112494532": {
+   "precio": 800,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
+  },
+  "idealista-112650065": {
+   "precio": 650,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-112569103": {
+   "precio": 680,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-102258759": {
+   "precio": 700,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-39673437": {
+   "precio": 720,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-1721057": {
+   "precio": 750,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-111588537": {
+   "precio": 775,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-112213902": {
+   "precio": 800,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-112512890": {
+   "precio": 800,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-107535809": {
+   "precio": 800,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-112515376": {
+   "precio": 800,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-112381971": {
+   "precio": 850,
    "visto": "2026-09-25",
    "ausencias": 0,
    "estado": "nuevo"
