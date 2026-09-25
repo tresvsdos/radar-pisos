@@ -1621,6 +1621,47 @@
    "visto": "2026-09-25",
    "ausencias": 0,
    "estado": "nuevo"
+  },
+  "idealista-112435109": {
+   "precio": 900,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es un estudio, y además se alquila por habitaciones a estudiantes y profesionales"
+  },
+  "idealista-112469589": {
+   "precio": 700,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es un estudio en entreplanta, y se alquila por habitaciones a estudiantes y profesionales"
+  },
+  "idealista-109048254": {
+   "precio": 780,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es un estudio; además el anuncio dice que los suministros van incluidos y luego que se cobran 150 € aparte"
+  },
+  "idealista-112528169": {
+   "precio": 850,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es un estudio y está en un bajo"
+  },
+  "idealista-111859140": {
+   "precio": 650,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es un estudio de 27 m²; es el mismo piso que idealista 112537510"
+  },
+  "idealista-27329061": {
+   "precio": 750,
+   "visto": "2026-09-25",
+   "ausencias": 0,
+   "estado": "nuevo"
   }
  },
  "dia": "2026-09-25"
