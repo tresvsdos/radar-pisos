@@ -3,27 +3,27 @@
   "idealista-102017358": {
    "precio": 850,
    "visto": "2026-09-15",
-   "ausencias": 11,
+   "ausencias": 12,
    "estado": "descartado",
    "motivo": "Está a 5.8 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-103615903": {
    "precio": 900,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "fuera",
    "motivo": "Es alquiler de temporada"
   },
   "idealista-107554233": {
    "precio": 800,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "descartado",
    "motivo": "Está a 4.4 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-109206675": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 4.2 km de CIRCE, fuera del radio de 4 km"
@@ -31,20 +31,20 @@
   "idealista-109430741": {
    "precio": 810,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Está a 4.1 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-110058823": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-111485921": {
    "precio": 725,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "La ficha dice 725 € y la descripción 675 €"
@@ -52,20 +52,20 @@
   "idealista-111679551": {
    "precio": 900,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "descartado",
    "motivo": "Está a 4.1 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112228692": {
    "precio": 650,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-112246330": {
    "precio": 875,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es alquiler de temporada"
@@ -73,20 +73,20 @@
   "idealista-112288419": {
    "precio": 850,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Está a 4.3 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112319586": {
    "precio": 800,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112379543": {
    "precio": 790,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
@@ -94,34 +94,34 @@
   "idealista-112443766": {
    "precio": 900,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112448941": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-112483680": {
    "precio": 810,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 4.4 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112507555": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 4.5 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112516432": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
@@ -129,13 +129,13 @@
   "idealista-112528760": {
    "precio": 750,
    "visto": "2026-09-15",
-   "ausencias": 10,
+   "ausencias": 11,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar; Está a 4.4 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112534653": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 4.8 km de CIRCE, fuera del radio de 4 km"
@@ -143,312 +143,314 @@
   "idealista-112540501": {
    "precio": 800,
    "visto": "2026-09-15",
-   "ausencias": 10,
+   "ausencias": 11,
    "estado": "descartado",
    "motivo": "Es alquiler de temporada"
   },
   "idealista-112546814": {
    "precio": 850,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112548525": {
    "precio": 790,
    "visto": "2026-09-16",
-   "ausencias": 9,
+   "ausencias": 10,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112549177": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-31206827": {
    "precio": 900,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-31846356": {
    "precio": 850,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-92507623": {
    "precio": 900,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar; Está a 4.5 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-100416739": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-101900040": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-102162067": {
    "precio": 900,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-106414542": {
    "precio": 900,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-108928779": {
    "precio": 850,
    "visto": "2026-09-25",
-   "ausencias": 0,
-   "estado": "sigue"
+   "ausencias": 1,
+   "estado": "fuera",
+   "motivo": "Ya no está publicado"
   },
   "idealista-109060059": {
    "precio": 850,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-109072677": {
    "precio": 875,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-110858609": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-111882580": {
    "precio": 850,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-111959605": {
    "precio": 900,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112143204": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-112253377": {
    "precio": 895,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112287832": {
    "precio": 900,
    "visto": "2026-09-20",
-   "ausencias": 5,
+   "ausencias": 6,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112297666": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-112316045": {
    "precio": 900,
    "visto": "2026-09-16",
-   "ausencias": 9,
+   "ausencias": 10,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112319109": {
    "precio": 825,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-112348449": {
    "precio": 800,
    "visto": "2026-09-20",
-   "ausencias": 5,
+   "ausencias": 6,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112350374": {
    "precio": 850,
    "visto": "2026-09-15",
-   "ausencias": 10,
+   "ausencias": 11,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112379745": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "subida"
+   "estado": "sigue"
   },
   "idealista-112389198": {
    "precio": 740,
    "visto": "2026-09-15",
-   "ausencias": 10,
+   "ausencias": 11,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112410127": {
    "precio": 890,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112411588": {
    "precio": 880,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-112426399": {
    "precio": 880,
    "visto": "2026-09-25",
-   "ausencias": 0,
-   "estado": "sigue"
+   "ausencias": 1,
+   "estado": "fuera",
+   "motivo": "Ya no está publicado"
   },
   "idealista-112473130": {
    "precio": 890,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-112475091": {
    "precio": 850,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112475989": {
    "precio": 900,
    "visto": "2026-09-15",
-   "ausencias": 10,
+   "ausencias": 11,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112490264": {
    "precio": 882,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112502738": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-112517336": {
    "precio": 875,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112524367": {
    "precio": 875,
    "visto": "2026-09-15",
-   "ausencias": 10,
+   "ausencias": 11,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-1865591": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-89280193": {
    "precio": 820,
    "visto": "2026-09-16",
-   "ausencias": 9,
+   "ausencias": 10,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-94411971": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-95766594": {
    "precio": 860,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112386491": {
    "precio": 790,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "fuera",
    "motivo": "Es alquiler para estudiantes"
   },
   "idealista-112451486": {
    "precio": 800,
    "visto": "2026-09-19",
-   "ausencias": 6,
+   "ausencias": 7,
    "estado": "fuera",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-112078031": {
    "precio": 900,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "fuera",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-112231455": {
    "precio": 850,
    "visto": "2026-09-15",
-   "ausencias": 11,
+   "ausencias": 12,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112490053": {
    "precio": 890,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "fuera",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-111866141": {
    "precio": 890,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
@@ -456,27 +458,27 @@
   "idealista-102648569": {
    "precio": 790,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "descartado",
    "motivo": "Se alquila sin muebles"
   },
   "idealista-112451979": {
    "precio": 900,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "descartado",
    "motivo": "Se alquila por habitaciones y solo a perfil de estudiantes o sanitarias"
   },
   "idealista-112438020": {
    "precio": 850,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar salvo la cocina"
   },
   "idealista-112502739": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es un bajo y se alquila sin amueblar"
@@ -484,20 +486,20 @@
   "idealista-112497032": {
    "precio": 750,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-112434962": {
    "precio": 750,
    "visto": "2026-09-15",
-   "ausencias": 10,
+   "ausencias": 11,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar; está a 6.0 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-31343051": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Tiene 4 habitaciones"
@@ -505,27 +507,27 @@
   "idealista-112289110": {
    "precio": 700,
    "visto": "2026-09-15",
-   "ausencias": 10,
+   "ausencias": 11,
    "estado": "descartado",
    "motivo": "Está a 6.6 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-95278414": {
    "precio": 800,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-112389689": {
    "precio": 890,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "descartado",
    "motivo": "Es alquiler de temporada"
   },
   "idealista-111907378": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
@@ -533,20 +535,20 @@
   "idealista-112523900": {
    "precio": 850,
    "visto": "2026-09-15",
-   "ausencias": 10,
+   "ausencias": 11,
    "estado": "descartado",
    "motivo": "Se alquila sin muebles"
   },
   "idealista-112370177": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar salvo algunos muebles sueltos"
   },
   "idealista-112342415": {
    "precio": 780,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
@@ -554,34 +556,34 @@
   "idealista-112489456": {
    "precio": 863,
    "visto": "2026-09-16",
-   "ausencias": 9,
+   "ausencias": 10,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-112522001": {
    "precio": 825,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar salvo la librería del salón"
   },
   "idealista-112389192": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-112488581": {
    "precio": 890,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin muebles"
   },
   "idealista-109653445": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es un bajo"
@@ -589,27 +591,27 @@
   "idealista-95091228": {
    "precio": 900,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112415607": {
    "precio": 750,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-112559483": {
    "precio": 850,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "descartado",
    "motivo": "Tiene 4 habitaciones"
   },
   "idealista-112558679": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
@@ -617,69 +619,69 @@
   "idealista-108536227": {
    "precio": 900,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-112389148": {
    "precio": 750,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "descartado",
    "motivo": "Es un bajo y está a 4.5 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112083769": {
    "precio": 800,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "descartado",
    "motivo": "Está a 4.4 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-111843067": {
    "precio": 900,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "descartado",
    "motivo": "Está en Casetas, a 12.4 km de CIRCE"
   },
   "idealista-107809863": {
    "precio": 774,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "descartado",
    "motivo": "Está a 4.4 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-111451943": {
    "precio": 700,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "descartado",
    "motivo": "Está a 4.2 km de CIRCE, fuera del radio de 4 km"
   },
   "pisos-65918383155_109200": {
    "precio": 650,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "pisos-67503418824_106700": {
    "precio": 750,
    "visto": "2026-09-16",
-   "ausencias": 9,
+   "ausencias": 10,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "pisos-65917618773_109200": {
    "precio": 900,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-112078031, que además está semiamueblado"
   },
   "pisos-66741831755_109200": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-112389192, que además se alquila sin muebles"
@@ -687,34 +689,34 @@
   "pisos-49205576112_100500": {
    "precio": 900,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-106414542"
   },
   "pisos-65856165152_109200": {
    "precio": 900,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-111959605"
   },
   "pisos-66682788258_990428": {
    "precio": 850,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-109060059"
   },
   "pisos-66718363420_990428": {
    "precio": 750,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-112143204"
   },
   "pisos-66725682954_990428": {
    "precio": 820,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-112379745"
@@ -722,20 +724,20 @@
   "pisos-67541952463_106100": {
    "precio": 900,
    "visto": "2026-09-20",
-   "ausencias": 5,
+   "ausencias": 6,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-102162067"
   },
   "pisos-67548153736_990428": {
    "precio": 850,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-112475091"
   },
   "pisos-67558371526_109200": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-112502738"
@@ -743,52 +745,52 @@
   "pisos-67581611671_109300": {
    "precio": 900,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-112443766"
   },
   "pisos-67596254702_100500": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Duplicado de idealista-112516432"
   },
   "idealista-2168197": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-101838036": {
    "precio": 875,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "pisos-60047408552_990428": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "pisos-66721936751_109800": {
    "precio": 820,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-103045564": {
    "precio": 900,
    "visto": "2026-09-17",
-   "ausencias": 8,
+   "ausencias": 9,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar con la cocina equipada"
   },
   "idealista-112479690": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Vivienda vacía, solo con electrodomésticos en la cocina"
@@ -796,13 +798,13 @@
   "idealista-112570315": {
    "precio": 850,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "descartado",
    "motivo": "Está a 4.3 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-94295180": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es un bajo"
@@ -810,13 +812,13 @@
   "idealista-112453483": {
    "precio": 850,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "descartado",
    "motivo": "Está en Santa Isabel, a 6.3 km de CIRCE"
   },
   "idealista-111220198": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 4.5 km de CIRCE, fuera del radio de 4 km"
@@ -824,53 +826,53 @@
   "idealista-112563782": {
    "precio": 600,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-98085161": {
    "precio": 725,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112572465": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-99255025": {
    "precio": 850,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-87557178": {
    "precio": 900,
    "visto": "2026-09-19",
-   "ausencias": 6,
+   "ausencias": 7,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112562913": {
    "precio": 890,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-112582409": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "El coste real son 1.017 € con la comunidad de 117 €, por encima del máximo"
   },
   "idealista-112575931": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es vivienda temporal"
@@ -878,20 +880,20 @@
   "idealista-112580157": {
    "precio": 750,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "descartado",
    "motivo": "Está marcado como alquiler de temporada"
   },
   "idealista-112476092": {
    "precio": 725,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
   },
   "idealista-112582696": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
@@ -899,96 +901,96 @@
   "idealista-85714255": {
    "precio": 850,
    "visto": "2026-09-19",
-   "ausencias": 6,
+   "ausencias": 7,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
   },
   "idealista-91668681": {
    "precio": 800,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
   },
   "idealista-110704948": {
    "precio": 825,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "descartado",
    "motivo": "Es un bajo"
   },
   "idealista-95349374": {
    "precio": 750,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Está a 4.1 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-88153773": {
    "precio": 850,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "descartado",
    "motivo": "Está a 4.2 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112576298": {
    "precio": 860,
    "visto": "2026-09-18",
-   "ausencias": 7,
+   "ausencias": 8,
    "estado": "descartado",
    "motivo": "Está a 4.3 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112573804": {
    "precio": 800,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-108123588": {
    "precio": 780,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-39900135": {
    "precio": 850,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-107396121": {
    "precio": 840,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112575177": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-112576296": {
    "precio": 900,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-104764188": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
   },
   "idealista-112402296": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es un bajo"
@@ -996,13 +998,13 @@
   "idealista-112454381": {
    "precio": 550,
    "visto": "2026-09-19",
-   "ausencias": 6,
+   "ausencias": 7,
    "estado": "descartado",
    "motivo": "Es un bajo y la ficha lo describe como local u oficina acondicionada como vivienda"
   },
   "pisos-67503500684_109200": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es un bajo"
@@ -1010,20 +1012,20 @@
   "pisos-66697882591_100500": {
    "precio": 800,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "descartado",
    "motivo": "Es un bajo"
   },
   "pisos-945856910040251_109800": {
    "precio": 750,
    "visto": "2026-09-20",
-   "ausencias": 5,
+   "ausencias": 6,
    "estado": "descartado",
    "motivo": "No consta en ningún sitio que esté amueblado"
   },
   "pisos-67547329758_109200": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 5.0 km de CIRCE, fuera del radio de 4 km; es el mismo piso que idealista 112534653"
@@ -1031,61 +1033,62 @@
   "idealista-112588915": {
    "precio": 850,
    "visto": "2026-09-25",
-   "ausencias": 0,
-   "estado": "sigue"
+   "ausencias": 1,
+   "estado": "fuera",
+   "motivo": "Ya no está publicado"
   },
   "idealista-112588059": {
    "precio": 775,
    "visto": "2026-09-20",
-   "ausencias": 5,
+   "ausencias": 6,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-100626762": {
    "precio": 800,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112591358": {
    "precio": 900,
    "visto": "2026-09-21",
-   "ausencias": 4,
+   "ausencias": 5,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112568785": {
    "precio": 800,
    "visto": "2026-09-20",
-   "ausencias": 5,
+   "ausencias": 6,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-105953724": {
    "precio": 900,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "descartado",
    "motivo": "Está a 4.3 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-95378372": {
    "precio": 850,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
   },
   "pisos-945856910040356_109800": {
    "precio": 500,
    "visto": "2026-09-20",
-   "ausencias": 5,
+   "ausencias": 6,
    "estado": "descartado",
    "motivo": "No consta en ningún sitio que esté amueblado"
   },
   "pisos-67512165444_106400": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es vivienda temporal; es el mismo piso que idealista 112575931"
@@ -1093,27 +1096,27 @@
   "pisos-945856910040478_109800": {
    "precio": 550,
    "visto": "2026-09-20",
-   "ausencias": 5,
+   "ausencias": 6,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "pisos-945856910040477_109800": {
    "precio": 700,
    "visto": "2026-09-20",
-   "ausencias": 5,
+   "ausencias": 6,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112603087": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
   },
   "idealista-112614061": {
    "precio": 830,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es un bajo y se alquila sin amueblar"
@@ -1121,102 +1124,102 @@
   "idealista-108416467": {
    "precio": 700,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "descartado",
    "motivo": "Está a 4.9 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112614552": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 4.2 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112606763": {
    "precio": 835,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 6.1 km de CIRCE, fuera del radio de 4 km"
   },
   "pisos-67589275906_100500": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 4.1 km de CIRCE; es el mismo piso que idealista 112614552"
   },
   "pisos-67548585838_990428": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es el mismo piso que idealista 112610272, que ya está publicado"
   },
   "idealista-112606403": {
    "precio": 875,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-112615977": {
    "precio": 750,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112610272": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-112610633": {
    "precio": 850,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "pisos-67554692781_990428": {
    "precio": 800,
    "visto": "2026-09-22",
-   "ausencias": 3,
+   "ausencias": 4,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112627615": {
    "precio": 860,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "descartado",
    "motivo": "Está a 4.1 km de CIRCE y, pese a anunciarse en alquiler, el texto vende el piso como inversión"
   },
   "idealista-105590209": {
    "precio": 800,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "descartado",
    "motivo": "Está a 4.4 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-88529452": {
    "precio": 890,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Tiene 4 habitaciones y se alquila sin muebles"
   },
   "idealista-112150688": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es alquiler temporal"
   },
   "idealista-103701968": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 12.3 km de CIRCE, en Casetas"
@@ -1224,67 +1227,68 @@
   "pisos-67560877988_990428": {
    "precio": 818,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Es el mismo piso que idealista 112618614, que ya está publicado"
   },
   "idealista-112618614": {
    "precio": 818,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-109203137": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-112620105": {
    "precio": 850,
    "visto": "2026-09-23",
-   "ausencias": 2,
+   "ausencias": 3,
    "estado": "fuera",
    "motivo": "Ya no está publicado"
   },
   "idealista-112626541": {
    "precio": 900,
    "visto": "2026-09-25",
-   "ausencias": 0,
-   "estado": "sigue"
+   "ausencias": 1,
+   "estado": "fuera",
+   "motivo": "Ya no está publicado"
   },
   "idealista-112640278": {
    "precio": 650,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "descartado",
    "motivo": "Está a 4.4 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112635710": {
    "precio": 900,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "descartado",
    "motivo": "Está a 4.4 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112630596": {
    "precio": 880,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 4.3 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-90798814": {
    "precio": 890,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Tiene 4 habitaciones y se alquila sin muebles"
   },
   "idealista-112414650": {
    "precio": 790,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "La ficha dice 790 € y la descripción 775 €, y es alquiler para estudiantes"
@@ -1292,13 +1296,13 @@
   "idealista-102381593": {
    "precio": 900,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
   },
   "idealista-112631088": {
    "precio": 740,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»; además es entreplanta"
@@ -1306,58 +1310,59 @@
   "pisos-67510361466_995219": {
    "precio": 760,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "descartado",
    "motivo": "La descripción dice «se alquila piso sin amueblar»"
   },
   "pisos-67546889028_106000": {
    "precio": 900,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Es el mismo piso que idealista 112575177, que ya está publicado"
   },
   "pisos-67571019698_109200": {
    "precio": 900,
    "visto": "2026-09-24",
-   "ausencias": 1,
+   "ausencias": 2,
    "estado": "descartado",
    "motivo": "Está a 4.5 km de CIRCE, fuera del radio de 4 km"
   },
   "pisos-67582095328_109200": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 4.4 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-90262979": {
    "precio": 790,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-102827264": {
    "precio": 825,
    "visto": "2026-09-25",
-   "ausencias": 0,
-   "estado": "sigue"
+   "ausencias": 1,
+   "estado": "fuera",
+   "motivo": "Ya no está publicado"
   },
   "idealista-112632420": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-112634319": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "sigue"
   },
   "idealista-93596290": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
@@ -1365,27 +1370,27 @@
   "idealista-112106397": {
    "precio": 850,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
   },
   "idealista-112649041": {
    "precio": 850,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Está a 4.4 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112487428": {
    "precio": 825,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 5.9 km de CIRCE, fuera del radio de 4 km"
   },
   "idealista-112641485": {
    "precio": 700,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Está a 5.3 km de CIRCE, fuera del radio de 4 km"
@@ -1393,39 +1398,39 @@
   "idealista-25845981": {
    "precio": 790,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Está a 4.4 km de CIRCE, fuera del radio de 4 km"
   },
   "pisos-67563419311_990428": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es el mismo piso que idealista 112143204, que ya está publicado"
   },
   "idealista-112089742": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-84293067": {
    "precio": 890,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-109513510": {
    "precio": 800,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Es un bajo"
   },
   "idealista-112587889": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es un bajo"
@@ -1433,41 +1438,41 @@
   "idealista-109164996": {
    "precio": 650,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Lleva la etiqueta de alquiler de temporada"
   },
   "idealista-95836136": {
    "precio": 710,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Lleva la etiqueta de alquiler de temporada"
   },
   "idealista-110924849": {
    "precio": 675,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es alquiler de temporada, mínimo cinco meses"
   },
   "idealista-112563293": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es alquiler de temporada"
   },
   "idealista-111972997": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es alquiler temporal de tres a doce meses"
   },
   "idealista-1796235": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es un bloque de apartamentos de temporada, no una vivienda concreta"
@@ -1475,27 +1480,27 @@
   "idealista-112537510": {
    "precio": 650,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Es un estudio de 27 m², sin dormitorio cerrado"
   },
   "idealista-111813092": {
    "precio": 825,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Es un loft de espacio abierto: la cama está en la zona de estar"
   },
   "idealista-104247225": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "La única puerta es la de la cocina: el anuncio habla de «gran salón y zona de dormitorio»"
   },
   "idealista-35808629": {
    "precio": 625,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Ni la descripción ni las fotos muestran un dormitorio cerrado"
@@ -1503,166 +1508,372 @@
   "idealista-112496439": {
    "precio": 750,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Sin fotos y con «sofá cama» en el texto: no consta que el dormitorio sea cerrado"
   },
   "idealista-112632687": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin muebles"
   },
   "idealista-112484227": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin muebles"
   },
   "idealista-112445906": {
    "precio": 900,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin muebles"
   },
   "idealista-112612148": {
    "precio": 725,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-105198700": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se alquila sin amueblar"
   },
   "idealista-112257535": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "Se entrega sin amueblar"
   },
   "idealista-112494532": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "descartado",
    "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
   },
   "idealista-112650065": {
    "precio": 650,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-112569103": {
    "precio": 680,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-102258759": {
    "precio": 700,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-39673437": {
    "precio": 720,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-1721057": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-111588537": {
    "precio": 775,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-112213902": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-112512890": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-107535809": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-112515376": {
    "precio": 800,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-112381971": {
    "precio": 850,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
    "ausencias": 0,
-   "estado": "nuevo"
+   "estado": "sigue"
   },
   "idealista-112435109": {
    "precio": 900,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Es un estudio, y además se alquila por habitaciones a estudiantes y profesionales"
   },
   "idealista-112469589": {
    "precio": 700,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Es un estudio en entreplanta, y se alquila por habitaciones a estudiantes y profesionales"
   },
   "idealista-109048254": {
    "precio": 780,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Es un estudio; además el anuncio dice que los suministros van incluidos y luego que se cobran 150 € aparte"
   },
   "idealista-112528169": {
    "precio": 850,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Es un estudio y está en un bajo"
   },
   "idealista-111859140": {
    "precio": 650,
    "visto": "2026-09-25",
-   "ausencias": 0,
+   "ausencias": 1,
    "estado": "descartado",
    "motivo": "Es un estudio de 27 m²; es el mismo piso que idealista 112537510"
   },
   "idealista-27329061": {
    "precio": 750,
-   "visto": "2026-09-25",
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "sigue"
+  },
+  "idealista-112237803": {
+   "precio": 525,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
+  },
+  "idealista-112644524": {
+   "precio": 850,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
+  },
+  "idealista-111913570": {
+   "precio": 800,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Se alquila sin amueblar"
+  },
+  "idealista-109369530": {
+   "precio": 750,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "El piso está sin amueblar"
+  },
+  "idealista-111957592": {
+   "precio": 800,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
+  },
+  "idealista-112534002": {
+   "precio": 850,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Se alquila sin muebles"
+  },
+  "idealista-111904730": {
+   "precio": 780,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
+  },
+  "idealista-112375344": {
+   "precio": 800,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
+  },
+  "idealista-112592717": {
+   "precio": 890,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "La ficha dice «cocina equipada y casa sin amueblar»"
+  },
+  "idealista-83816546": {
+   "precio": 850,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "La ficha dice «cocina sin equipar y casa sin amueblar»"
+  },
+  "idealista-88964673": {
+   "precio": 800,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Se alquila por meses"
+  },
+  "idealista-111015767": {
+   "precio": 790,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Está a 4.2 km de CIRCE, fuera del radio de 4 km"
+  },
+  "idealista-99059206": {
+   "precio": 790,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Está a 4.3 km de CIRCE, fuera del radio de 4 km"
+  },
+  "pisos-65868912886_100500": {
+   "precio": 800,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es el mismo piso que idealista 111913570, que se alquila sin amueblar"
+  },
+  "pisos-67530188927_106100": {
+   "precio": 675,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es el mismo piso que idealista 110924849, de temporada"
+  },
+  "pisos-67566242905_100500": {
+   "precio": 800,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es el mismo piso que idealista 112494532, sin amueblar"
+  },
+  "pisos-67536248306_109300": {
+   "precio": 800,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es el mismo piso que idealista 112484227, que se alquila sin muebles"
+  },
+  "pisos-67597608830_102200": {
+   "precio": 750,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es el mismo dúplex de temporada que idealista 112563293"
+  },
+  "pisos-67523502345_102200": {
+   "precio": 750,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es el mismo dúplex de temporada que idealista 112563293"
+  },
+  "pisos-67537951128_990428": {
+   "precio": 900,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es el mismo piso que idealista 112632687, que se alquila sin muebles"
+  },
+  "pisos-67509054836_106100": {
+   "precio": 900,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Es el mismo piso que idealista 112634319, que ya está publicado"
+  },
+  "pisos-945856910040602_109800": {
+   "precio": 750,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Precio muy por debajo del mercado con ficha autogenerada; dos anuncios de la misma serie desaparecieron en 24 horas el 20/09"
+  },
+  "pisos-945856910040598_109800": {
+   "precio": 500,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Precio muy por debajo del mercado con ficha autogenerada; dos anuncios de la misma serie desaparecieron en 24 horas el 20/09"
+  },
+  "pisos-945856910040686_109800": {
+   "precio": 550,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Precio muy por debajo del mercado con ficha autogenerada; dos anuncios de la misma serie desaparecieron en 24 horas el 20/09"
+  },
+  "pisos-945856910040684_109800": {
+   "precio": 750,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Precio muy por debajo del mercado con ficha autogenerada; dos anuncios de la misma serie desaparecieron en 24 horas el 20/09"
+  },
+  "pisos-945856910040590_109800": {
+   "precio": 500,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "descartado",
+   "motivo": "Precio muy por debajo del mercado con ficha autogenerada; dos anuncios de la misma serie desaparecieron en 24 horas el 20/09"
+  },
+  "idealista-100182820": {
+   "precio": 775,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-112582214": {
+   "precio": 780,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "idealista-106151502": {
+   "precio": 875,
+   "visto": "2026-09-26",
+   "ausencias": 0,
+   "estado": "nuevo"
+  },
+  "pisos-67500879289_990428": {
+   "precio": 900,
+   "visto": "2026-09-26",
    "ausencias": 0,
    "estado": "nuevo"
   }
  },
- "dia": "2026-09-25"
+ "dia": "2026-09-26"
 }

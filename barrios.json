@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-25",
+ "actualizado": "2026-09-26",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -78,13 +78,13 @@
    "lat": 41.646267,
    "lng": -0.881,
    "km": 3.2,
-   "anuncios": 2
+   "anuncios": 3
   },
   "Centro (Paseo Independencia)": {
    "lat": 41.651111,
    "lng": -0.884951,
    "km": 2.6,
-   "anuncios": 3
+   "anuncios": 5
   },
   "Centro (Paseo Sagasta)": {
    "lat": 41.641821,
@@ -186,7 +186,7 @@
    "lat": 41.642335,
    "lng": -0.897258,
    "km": 3.2,
-   "anuncios": 7
+   "anuncios": 8
   },
   "Valdefierro": {
    "lat": 41.637642,
