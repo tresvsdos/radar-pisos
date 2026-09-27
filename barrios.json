@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-26",
+ "actualizado": "2026-09-27",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -54,7 +54,7 @@
    "lat": 41.655997,
    "lng": -0.885783,
    "km": 2.1,
-   "anuncios": 5
+   "anuncios": 6
   },
   "Casetas - Garrapinillos - Monzalbarba": {
    "lat": 41.724068,
@@ -144,7 +144,7 @@
    "lat": 41.650583,
    "lng": -0.913856,
    "km": 2.5,
-   "anuncios": 6
+   "anuncios": 7
   },
   "Parque Miraflores": {
    "lat": 41.645794,
