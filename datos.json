@@ -1,5 +1,5 @@
 {
- "fecha": "2026-09-27",
+ "fecha": "2026-09-28",
  "circe": {
   "lat": 41.67079,
   "lng": -0.90188
@@ -1384,6 +1384,43 @@
    ]
   },
   {
+   "id": "idealista-112666885",
+   "url": "https://www.idealista.com/inmueble/112666885/?utm_medium=generativeAI&utm_campaign=appChatgpt&utm_creation=link&utm_source=idGpt&utm_project=leadGeneration&utm_link=inChat_detail",
+   "direccion": "Calle la Almunia de Doña Godina, 25",
+   "zona": "La Almozara",
+   "lat": 41.6621434,
+   "lng": -0.8984659,
+   "precio": 850,
+   "precio_anterior": null,
+   "nota_precio": "comunidad sin indicar",
+   "m2": 65,
+   "habitaciones": 2,
+   "banos": 1,
+   "planta": "entreplanta",
+   "exterior": true,
+   "ascensor": false,
+   "muebles": "confirmado",
+   "distancia_km": 1.0,
+   "andando_min": 16,
+   "bici_min": 5,
+   "puntuacion": 52,
+   "estado": "nuevo",
+   "lo_mejor": "El piso más cercano a CIRCE de toda la lista: 1 km, con terraza de 24 m² y aire acondicionado.",
+   "ojo": "Es una entreplanta y la finca no tiene ascensor. El anuncio avisa de que falta la cama del dormitorio principal, y no dice si la comunidad va incluida.",
+   "fotos": [
+    "0/d5/de/cf/1477935030|Terraza",
+    "0/74/d2/e8/1477934891|Cocina",
+    "0/f8/3f/8c/1477934892|Salón",
+    "0/37/12/cd/1477934954|Habitación",
+    "0/88/1d/5b/1477935023|Baño",
+    "0/f2/dd/bf/1477935024|Baño",
+    "0/00/f2/74/1477935027|Salón",
+    "0/17/62/11/1477935028|Pasillo",
+    "0/25/f6/00/1477935029|Habitación",
+    "0/79/83/92/1477935035|Estancia"
+   ]
+  },
+  {
    "id": "pisos-66721936751_109800",
    "url": "https://www.pisos.com/alquilar/piso-zaragoza_capital_centro50004-66721936751_109800/",
    "direccion": "Calle de Madre Sacramento, 3",
@@ -1456,7 +1493,7 @@
    "andando_min": 46,
    "bici_min": 15,
    "puntuacion": 51,
-   "estado": "nuevo",
+   "estado": "sigue",
    "lo_mejor": "Tres dormitorios recién reformados con la comunidad incluida, frente al parque de las Delicias.",
    "ojo": "Son 55 m² construidos (51 útiles) para tres dormitorios, así que las habitaciones serán pequeñas. No tiene aire acondicionado.",
    "fotos": [
@@ -1620,7 +1657,7 @@
    "andando_min": 33,
    "bici_min": 10,
    "puntuacion": 47,
-   "estado": "nuevo",
+   "estado": "sigue",
    "lo_mejor": "Amueblado hasta el detalle en San Pablo, tercero exterior con ascensor a 2 km de CIRCE.",
    "ojo": "Está en el tope de los 900 € y no dice si la comunidad va incluida; orientación norte y sin aire acondicionado.",
    "fotos": [
@@ -1629,6 +1666,40 @@
     "0/b4/db/47/1074033737|Habitación",
     "0/fc/23/1a/1074033738|Habitación",
     "0/ed/7f/57/1074033765|Baño"
+   ]
+  },
+  {
+   "id": "idealista-112667610",
+   "url": "https://www.idealista.com/inmueble/112667610/?utm_medium=generativeAI&utm_campaign=appChatgpt&utm_creation=link&utm_source=idGpt&utm_project=leadGeneration&utm_link=inChat_detail",
+   "direccion": "Calle de Pelegrín, 1",
+   "zona": "Casco Histórico (La Magdalena)",
+   "lat": 41.651884,
+   "lng": -0.87396,
+   "precio": 850,
+   "precio_anterior": null,
+   "nota_precio": "comunidad sin indicar",
+   "m2": 45,
+   "habitaciones": 1,
+   "banos": 1,
+   "planta": "3ª",
+   "exterior": true,
+   "ascensor": true,
+   "muebles": "confirmado",
+   "distancia_km": 3.1,
+   "andando_min": 50,
+   "bici_min": 16,
+   "puntuacion": 47,
+   "estado": "nuevo",
+   "lo_mejor": "Amueblado y equipado en La Magdalena, tercero exterior con ascensor, balcón y trastero de 6 m².",
+   "ojo": "Un dormitorio cerrado, pero 45 m² a 850 € son 18,9 €/m², el metro más caro de hoy. La comunidad no viene indicada y está a 3,1 km de CIRCE.",
+   "fotos": [
+    "0/a9/43/4b/1477950858|Salón",
+    "0/9d/d7/35/1477950850|Cocina",
+    "0/d7/84/60/1477950849|Salón",
+    "0/be/0b/6e/1477950838|Salón",
+    "0/88/fd/e1/1477950839|Habitación",
+    "0/9e/15/ea/1477950859|Baño",
+    "0/ae/e7/ac/1477950857|Zonas comunes"
    ]
   },
   {

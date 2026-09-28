@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-27",
+ "actualizado": "2026-09-28",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -48,7 +48,7 @@
    "lat": 41.649993,
    "lng": -0.87068,
    "km": 3.5,
-   "anuncios": 5
+   "anuncios": 6
   },
   "Casco Histórico (San Pablo)": {
    "lat": 41.655997,
@@ -126,7 +126,7 @@
    "lat": 41.661615,
    "lng": -0.898093,
    "km": 1.1,
-   "anuncios": 5
+   "anuncios": 6
   },
   "La Granja": {
    "lat": 41.640377,
