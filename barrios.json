@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-28",
+ "actualizado": "2026-09-29",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -42,7 +42,7 @@
    "lat": 41.655313,
    "lng": -0.880307,
    "km": 2.5,
-   "anuncios": 6
+   "anuncios": 7
   },
   "Casco Histórico (La Magdalena)": {
    "lat": 41.649993,
@@ -90,7 +90,7 @@
    "lat": 41.641821,
    "lng": -0.887541,
    "km": 3.4,
-   "anuncios": 5
+   "anuncios": 6
   },
   "Ciudad Jardín - Parque Roma": {
    "lat": 41.647239,
@@ -186,7 +186,7 @@
    "lat": 41.642335,
    "lng": -0.897258,
    "km": 3.2,
-   "anuncios": 8
+   "anuncios": 9
   },
   "Valdefierro": {
    "lat": 41.637642,
