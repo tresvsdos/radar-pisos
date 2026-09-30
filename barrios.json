@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-09-29",
+ "actualizado": "2026-09-30",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -18,7 +18,7 @@
    "lat": 41.652835,
    "lng": -0.901426,
    "km": 2.0,
-   "anuncios": 2
+   "anuncios": 3
   },
   "Bombarda - Monsalud": {
    "lat": 41.653606,
@@ -150,7 +150,7 @@
    "lat": 41.645794,
    "lng": -0.873756,
    "km": 3.6,
-   "anuncios": 3
+   "anuncios": 4
   },
   "Salvador Allende - Parque Goya": {
    "lat": 41.669432,
@@ -222,7 +222,7 @@
    "lat": 41.638015,
    "lng": -0.889594,
    "km": 3.8,
-   "anuncios": 1
+   "anuncios": 2
   },
   "San José (Camino de las Torres)": {
    "lat": 41.640968,
