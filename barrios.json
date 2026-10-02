@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-10-01",
+ "actualizado": "2026-10-02",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -18,7 +18,7 @@
    "lat": 41.652835,
    "lng": -0.901426,
    "km": 2.0,
-   "anuncios": 3
+   "anuncios": 4
   },
   "Bombarda - Monsalud": {
    "lat": 41.653606,
@@ -36,7 +36,7 @@
    "lat": 41.6582,
    "lng": -0.889157,
    "km": 1.8,
-   "anuncios": 2
+   "anuncios": 3
   },
   "Casco Histórico (Alfonso)": {
    "lat": 41.655313,
@@ -84,7 +84,7 @@
    "lat": 41.651111,
    "lng": -0.884951,
    "km": 2.6,
-   "anuncios": 5
+   "anuncios": 6
   },
   "Centro (Paseo Sagasta)": {
    "lat": 41.641821,
@@ -108,7 +108,7 @@
    "lat": 41.652013,
    "lng": -0.899021,
    "km": 2.1,
-   "anuncios": 2
+   "anuncios": 3
   },
   "El Rabal (Arrabal)": {
    "lat": 41.660468,
@@ -138,7 +138,7 @@
    "lat": 41.648441,
    "lng": -0.864892,
    "km": 4.0,
-   "anuncios": 3
+   "anuncios": 4
   },
   "Parque Delicias - La Bozada": {
    "lat": 41.650583,
@@ -180,13 +180,13 @@
    "lat": 41.642974,
    "lng": -0.910076,
    "km": 3.2,
-   "anuncios": 2
+   "anuncios": 3
   },
   "Universidad (San Francisco)": {
    "lat": 41.642335,
    "lng": -0.897258,
    "km": 3.2,
-   "anuncios": 10
+   "anuncios": 11
   },
   "Valdefierro": {
    "lat": 41.637642,
@@ -234,6 +234,12 @@
    "lat": 41.6605021,
    "lng": -0.8615728,
    "km": 3.5,
+   "anuncios": 1
+  },
+  "Oliver": {
+   "lat": 41.6533965,
+   "lng": -0.9284881,
+   "km": 2.9,
    "anuncios": 1
   }
  }
