@@ -6,7 +6,7 @@
   "lat": 41.67079,
   "lng": -0.90188
  },
- "actualizado": "2026-10-02",
+ "actualizado": "2026-10-03",
  "barrios": {
   "Barrio Jesús": {
    "lat": 41.655402,
@@ -66,7 +66,7 @@
    "lat": 41.650056,
    "lng": -0.877279,
    "km": 3.1,
-   "anuncios": 3
+   "anuncios": 4
   },
   "Centro (Doctor Cerrada)": {
    "lat": 41.648689,
@@ -102,7 +102,7 @@
    "lat": 41.650479,
    "lng": -0.905878,
    "km": 2.3,
-   "anuncios": 3
+   "anuncios": 4
   },
   "Delicias (Mercado San Valero)": {
    "lat": 41.652013,
@@ -126,7 +126,7 @@
    "lat": 41.661615,
    "lng": -0.898093,
    "km": 1.1,
-   "anuncios": 6
+   "anuncios": 7
   },
   "La Granja": {
    "lat": 41.640377,
@@ -186,7 +186,7 @@
    "lat": 41.642335,
    "lng": -0.897258,
    "km": 3.2,
-   "anuncios": 11
+   "anuncios": 12
   },
   "Valdefierro": {
    "lat": 41.637642,
